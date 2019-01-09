@@ -1,0 +1,117 @@
+#
+# Target options
+#
+BR2_ARCH_HAS_MMU_OPTIONAL=y
+# BR2_arcle is not set
+# BR2_arceb is not set
+BR2_arm=y
+# BR2_armeb is not set
+# BR2_aarch64 is not set
+# BR2_aarch64_be is not set
+# BR2_csky is not set
+# BR2_i386 is not set
+# BR2_m68k is not set
+# BR2_microblazeel is not set
+# BR2_microblazebe is not set
+# BR2_mips is not set
+# BR2_mipsel is not set
+# BR2_mips64 is not set
+# BR2_mips64el is not set
+# BR2_nios2 is not set
+# BR2_or1k is not set
+# BR2_powerpc is not set
+# BR2_powerpc64 is not set
+# BR2_powerpc64le is not set
+# BR2_riscv is not set
+# BR2_sh is not set
+# BR2_sparc is not set
+# BR2_sparc64 is not set
+# BR2_x86_64 is not set
+# BR2_xtensa is not set
+BR2_ARCH_HAS_TOOLCHAIN_BUILDROOT=y
+BR2_ARCH="arm"
+BR2_ENDIAN="LITTLE"
+BR2_GCC_TARGET_ABI="aapcs-linux"
+BR2_GCC_TARGET_CPU="arm1176jzf-s"
+BR2_GCC_TARGET_FPU="vfp"
+BR2_GCC_TARGET_FLOAT_ABI="hard"
+BR2_GCC_TARGET_MODE="arm"
+BR2_BINFMT_SUPPORTS_SHARED=y
+BR2_READELF_ARCH_NAME="ARM"
+BR2_BINFMT_ELF=y
+BR2_ARM_CPU_HAS_FPU=y
+BR2_ARM_CPU_HAS_VFPV2=y
+BR2_ARM_CPU_HAS_ARM=y
+BR2_ARM_CPU_HAS_THUMB=y
+BR2_ARM_CPU_ARMV6=y
+
+#
+# armv4 cores
+#
+# BR2_arm920t is not set
+# BR2_arm922t is not set
+# BR2_fa526 is not set
+# BR2_strongarm is not set
+
+#
+# armv5 cores
+#
+# BR2_arm926t is not set
+# BR2_iwmmxt is not set
+# BR2_xscale is not set
+
+#
+# armv6 cores
+#
+# BR2_arm1136j_s is not set
+# BR2_arm1136jf_s is not set
+# BR2_arm1176jz_s is not set
+BR2_arm1176jzf_s=y
+# BR2_arm11mpcore is not set
+
+#
+# armv7a cores
+#
+# BR2_cortex_a5 is not set
+# BR2_cortex_a7 is not set
+# BR2_cortex_a8 is not set
+# BR2_cortex_a9 is not set
+# BR2_cortex_a12 is not set
+# BR2_cortex_a15 is not set
+# BR2_cortex_a15_a7 is not set
+# BR2_cortex_a17 is not set
+# BR2_cortex_a17_a7 is not set
+# BR2_pj4 is not set
+
+#
+# armv7m cores
+#
+# BR2_cortex_m3 is not set
+# BR2_cortex_m4 is not set
+# BR2_cortex_m7 is not set
+
+#
+# armv8 cores
+#
+# BR2_cortex_a32 is not set
+# BR2_cortex_a35 is not set
+# BR2_cortex_a53 is not set
+# BR2_cortex_a57 is not set
+# BR2_cortex_a57_a53 is not set
+# BR2_cortex_a72 is not set
+# BR2_cortex_a72_a53 is not set
+# BR2_cortex_a73 is not set
+# BR2_cortex_a73_a35 is not set
+# BR2_cortex_a73_a53 is not set
+# BR2_exynos_m1 is not set
+# BR2_falkor is not set
+# BR2_qdf24xx is not set
+# BR2_xgene1 is not set
+# BR2_ARM_EABI is not set
+BR2_ARM_EABIHF=y
+BR2_ARM_FPU_VFPV2=y
+BR2_ARM_INSTRUCTIONS_ARM=y
+
+#
+# Thumb1 is not compatible with VFP
+#

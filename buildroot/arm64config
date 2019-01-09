@@ -1,0 +1,81 @@
+#
+# Target options
+#
+BR2_ARCH_IS_64=y
+BR2_ARCH_HAS_MMU_MANDATORY=y
+BR2_ARCH_HAS_MMU_OPTIONAL=y
+# BR2_arcle is not set
+# BR2_arceb is not set
+# BR2_arm is not set
+# BR2_armeb is not set
+BR2_aarch64=y
+# BR2_aarch64_be is not set
+# BR2_csky is not set
+# BR2_i386 is not set
+# BR2_m68k is not set
+# BR2_microblazeel is not set
+# BR2_microblazebe is not set
+# BR2_mips is not set
+# BR2_mipsel is not set
+# BR2_mips64 is not set
+# BR2_mips64el is not set
+# BR2_nios2 is not set
+# BR2_or1k is not set
+# BR2_powerpc is not set
+# BR2_powerpc64 is not set
+# BR2_powerpc64le is not set
+# BR2_riscv is not set
+# BR2_sh is not set
+# BR2_sparc is not set
+# BR2_sparc64 is not set
+# BR2_x86_64 is not set
+# BR2_xtensa is not set
+BR2_ARCH_HAS_TOOLCHAIN_BUILDROOT=y
+BR2_ARCH="aarch64"
+BR2_ENDIAN="LITTLE"
+BR2_GCC_TARGET_ABI="lp64"
+BR2_GCC_TARGET_CPU="cortex-a53"
+BR2_BINFMT_SUPPORTS_SHARED=y
+BR2_READELF_ARCH_NAME="AArch64"
+BR2_BINFMT_ELF=y
+BR2_ARM_CPU_HAS_FPU=y
+BR2_ARM_CPU_HAS_VFPV2=y
+BR2_ARM_CPU_HAS_VFPV3=y
+BR2_ARM_CPU_HAS_VFPV4=y
+BR2_ARM_CPU_HAS_FP_ARMV8=y
+BR2_ARM_CPU_ARMV8A=y
+
+#
+# armv8 cores
+#
+# BR2_cortex_a35 is not set
+BR2_cortex_a53=y
+# BR2_cortex_a57 is not set
+# BR2_cortex_a57_a53 is not set
+# BR2_cortex_a72 is not set
+# BR2_cortex_a72_a53 is not set
+# BR2_cortex_a73 is not set
+# BR2_cortex_a73_a35 is not set
+# BR2_cortex_a73_a53 is not set
+# BR2_exynos_m1 is not set
+# BR2_falkor is not set
+# BR2_qdf24xx is not set
+# BR2_thunderx is not set
+# BR2_thunderxt81 is not set
+# BR2_thunderxt83 is not set
+# BR2_thunderxt88 is not set
+# BR2_thunderxt88p1 is not set
+# BR2_xgene1 is not set
+
+#
+# armv8.1a cores
+#
+# BR2_thunderx2t99 is not set
+# BR2_thunderx2t99p1 is not set
+# BR2_vulcan is not set
+# BR2_ARM_FPU_VFPV2 is not set
+# BR2_ARM_FPU_VFPV3 is not set
+# BR2_ARM_FPU_VFPV3D16 is not set
+# BR2_ARM_FPU_VFPV4 is not set
+# BR2_ARM_FPU_VFPV4D16 is not set
+BR2_ARM_FPU_FP_ARMV8=y
