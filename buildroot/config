@@ -2277,6 +2277,7 @@ BR2_PACKAGE_LIBTIRPC=y
 # BR2_PACKAGE_RABBITMQ_C is not set
 # BR2_PACKAGE_RTMPDUMP is not set
 # BR2_PACKAGE_SLIRP is not set
+BR2_PACKAGE_SLIRP4NETNS=y
 
 #
 # snmp++ needs a toolchain w/ threads, C++, dynamic library
