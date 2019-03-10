@@ -21,7 +21,7 @@ RUN curl -fL https://storage.googleapis.com/buildroot-cache/2018.11.1.tar.gz | t
 WORKDIR /usr/src/buildroot
 COPY conntrack-tools/* /usr/src/buildroot/package/conntrack-tools/
 COPY slirp4netns/* /usr/src/buildroot/package/slirp4netns/
-COPY busybox.config /usr/src/buildroot/package/busbox/
+COPY busybox.config /usr/src/buildroot/package/busybox/
 COPY package/Config.in /usr/src/buildroot/package/
 
 ARG ARCH=x86_64
