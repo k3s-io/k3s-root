@@ -1,0 +1,7 @@
+# From http://download.strongswan.org/strongswan-5.8.1.tar.bz2.md5
+md5	5a6b9980cd1ac4fad3c24b55ed960ac9	strongswan-5.8.1.tar.bz2
+# Calculated based on the hash above
+sha256	d9af70acea5c054952ad1584916c1bf231b064eb6c8a9791dcb6ae90a769990c	strongswan-5.8.1.tar.bz2
+# Locally calculated
+sha256	8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643  COPYING
+sha256	2292e21797754548dccdef9eef6aee7584e552fbd890fa914e1de8d3577d23f0  LICENSE
