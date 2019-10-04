@@ -73,6 +73,18 @@ BR2_cortex_a53=y
 # BR2_thunderx2t99 is not set
 # BR2_thunderx2t99p1 is not set
 # BR2_vulcan is not set
+
+#
+# armv8.2a cores
+#
+# BR2_cortex_a55 is not set
+# BR2_cortex_a75 is not set
+# BR2_cortex_a75_a55 is not set
+
+#
+# armv8.3a cores
+#
+# BR2_saphira is not set
 # BR2_ARM_FPU_VFPV2 is not set
 # BR2_ARM_FPU_VFPV3 is not set
 # BR2_ARM_FPU_VFPV3D16 is not set

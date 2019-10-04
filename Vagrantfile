@@ -6,7 +6,7 @@
 
 # Buildroot version to use
 # RELEASE='2019.05.1'
-RELEASE='2018.11.1'
+RELEASE='2019.02.6'
 
 ### Change here for more memory/cores ###
 VM_MEMORY=4096
@@ -95,7 +95,6 @@ Vagrant.configure('2') do |config|
 		echo 'Downloading and extracting buildroot #{RELEASE}'
 		sudo mkdir -m 777 -p /usr/src/buildroot
 		curl -sL https://buildroot.org/downloads/buildroot-#{RELEASE}.tar.bz2 | tar xvjf - -C /usr/src/buildroot --strip-components=1
-		curl -sL https://storage.googleapis.com/buildroot-cache/#{RELEASE}.tar.gz | tar xvzf - -C /usr/src/buildroot
 		"
 
 	config.vm.provision 'shell', privileged: false, inline:
