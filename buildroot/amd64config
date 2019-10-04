@@ -43,6 +43,7 @@ BR2_X86_CPU_HAS_SSE3=y
 BR2_x86_nocona=y
 # BR2_x86_core2 is not set
 # BR2_x86_corei7 is not set
+# BR2_x86_westmere is not set
 # BR2_x86_corei7_avx is not set
 # BR2_x86_core_avx2 is not set
 # BR2_x86_atom is not set

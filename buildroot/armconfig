@@ -104,8 +104,6 @@ BR2_arm1176jzf_s=y
 # BR2_cortex_a73_a35 is not set
 # BR2_cortex_a73_a53 is not set
 # BR2_exynos_m1 is not set
-# BR2_falkor is not set
-# BR2_qdf24xx is not set
 # BR2_xgene1 is not set
 # BR2_ARM_EABI is not set
 BR2_ARM_EABIHF=y
