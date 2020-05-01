@@ -19,6 +19,7 @@ BR2_aarch64=y
 # BR2_mipsel is not set
 # BR2_mips64 is not set
 # BR2_mips64el is not set
+# BR2_nds32 is not set
 # BR2_nios2 is not set
 # BR2_or1k is not set
 # BR2_powerpc is not set
@@ -57,8 +58,10 @@ BR2_cortex_a53=y
 # BR2_cortex_a73 is not set
 # BR2_cortex_a73_a35 is not set
 # BR2_cortex_a73_a53 is not set
+# BR2_emag is not set
 # BR2_exynos_m1 is not set
 # BR2_falkor is not set
+# BR2_phecda is not set
 # BR2_qdf24xx is not set
 # BR2_thunderx is not set
 # BR2_thunderxt81 is not set
@@ -80,9 +83,13 @@ BR2_cortex_a53=y
 # BR2_cortex_a55 is not set
 # BR2_cortex_a75 is not set
 # BR2_cortex_a75_a55 is not set
+# BR2_cortex_a76 is not set
+# BR2_cortex_a76_a55 is not set
+# BR2_neoverse_n1 is not set
+# BR2_tsv110 is not set
 
 #
-# armv8.3a cores
+# armv8.4a cores
 #
 # BR2_saphira is not set
 # BR2_ARM_FPU_VFPV2 is not set
