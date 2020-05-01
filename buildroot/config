@@ -3613,7 +3613,7 @@ BR2_PACKAGE_UTIL_LINUX_BINARIES=y
 #
 # login needs a uClibc or glibc toolchain w/ wchar, locale, dynamic library
 #
-# BR2_PACKAGE_UTIL_LINUX_LOSETUP is not set
+BR2_PACKAGE_UTIL_LINUX_LOSETUP=y
 # BR2_PACKAGE_UTIL_LINUX_LSLOGINS is not set
 # BR2_PACKAGE_UTIL_LINUX_LSMEM is not set
 # BR2_PACKAGE_UTIL_LINUX_MESG is not set
