@@ -5,8 +5,7 @@
 ################################################################################
 
 # Buildroot version to use
-# RELEASE='2019.05.1'
-RELEASE='2019.02.6'
+RELEASE='2020.02.1'
 
 ### Change here for more memory/cores ###
 VM_MEMORY=4096
@@ -100,8 +99,7 @@ Vagrant.configure('2') do |config|
 	config.vm.provision 'shell', privileged: false, inline:
 		"
 		cd #{PROJECT_DIR}
-		cp package/Config.in /usr/src/buildroot/package/
-	
+
 		mkdir -p /usr/src/buildroot/package/conntrack-tools/
 		cp conntrack-tools/* /usr/src/buildroot/package/conntrack-tools/
 	
@@ -117,6 +115,9 @@ Vagrant.configure('2') do |config|
 		cat buildroot/config buildroot/#{ARCH}config >/usr/src/buildroot/.config
 
 		cd /usr/src/buildroot/
+
+		patch -p1 -i #{PROJECT_DIR}/package/Config.patch
+
 		# make oldconfig
 		"
 

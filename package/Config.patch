@@ -1,0 +1,10 @@
+--- a/package/Config.in	2020-04-10 20:42:41.000000000 +0000
++++ b/package/Config.in	2020-05-02 13:04:15.955468265 +0000
+@@ -1724,6 +1724,7 @@
+ 	source "package/restclient-cpp/Config.in"
+ 	source "package/rtmpdump/Config.in"
+ 	source "package/slirp/Config.in"
++	source "package/slirp4netns/Config.in"
+ 	source "package/snmppp/Config.in"
+ 	source "package/sofia-sip/Config.in"
+ 	source "package/sysrepo/Config.in"

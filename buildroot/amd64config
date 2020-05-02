@@ -18,6 +18,7 @@ BR2_ARCH_HAS_MMU_MANDATORY=y
 # BR2_mipsel is not set
 # BR2_mips64 is not set
 # BR2_mips64el is not set
+# BR2_nds32 is not set
 # BR2_nios2 is not set
 # BR2_or1k is not set
 # BR2_powerpc is not set

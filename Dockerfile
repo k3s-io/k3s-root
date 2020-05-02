@@ -16,13 +16,14 @@ RUN apt-get install -y \
     python \
     unzip
 RUN mkdir /usr/src/buildroot
-RUN curl -fL https://buildroot.org/downloads/buildroot-2019.02.6.tar.bz2 | tar xvjf - -C /usr/src/buildroot --strip-components=1
+RUN curl -fL https://buildroot.org/downloads/buildroot-2020.02.1.tar.bz2 | tar xvjf - -C /usr/src/buildroot --strip-components=1
 WORKDIR /usr/src/buildroot
 COPY conntrack-tools/* /usr/src/buildroot/package/conntrack-tools/
 COPY slirp4netns/* /usr/src/buildroot/package/slirp4netns/
 COPY strongswan/* /usr/src/buildroot/package/strongswan/
 COPY busybox.config /usr/src/buildroot/package/busybox/
-COPY package/Config.in /usr/src/buildroot/package/
+COPY package/Config.patch /usr/src/buildroot/package/
+RUN patch -p1 -i package/Config.patch
 
 ARG ARCH=amd64
 COPY buildroot/config /usr/src/buildroot/.config
