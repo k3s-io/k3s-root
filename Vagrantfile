@@ -4,9 +4,6 @@
 #
 ################################################################################
 
-# Buildroot version to use
-RELEASE='2020.02.1'
-
 ### Change here for more memory/cores ###
 VM_MEMORY=4096
 VM_CORES=4
@@ -41,18 +38,6 @@ Vagrant.configure('2') do |config|
 	config.vm.provider :virtualbox do |v, override|
 		v.memory = VM_MEMORY
 		v.cpus = VM_CORES
-	end
-
-	config.vm.provision 'shell' do |s|
-		s.inline = 'echo Setting up machine name'
-
-		config.vm.provider :vmware_fusion do |v, override|
-			v.vmx['displayname'] = "Buildroot #{RELEASE}"
-		end
-
-		config.vm.provider :virtualbox do |v, override|
-			v.name = "Buildroot #{RELEASE}"
-		end
 	end
 
 	config.vm.provision 'shell', privileged: true, inline:
@@ -91,32 +76,19 @@ Vagrant.configure('2') do |config|
 
 	config.vm.provision 'shell', privileged: false, inline:
 		"
-		echo 'Downloading and extracting buildroot #{RELEASE}'
+		BUILDROOT_VERSION=$(grep BUILDROOT_VERSION #{PROJECT_DIR}/Dockerfile | cut -f2 -d=)
+		echo 'Downloading and extracting buildroot' ${BUILDROOT_VERSION}
 		sudo mkdir -m 777 -p /usr/src/buildroot
-		curl -sL https://buildroot.org/downloads/buildroot-#{RELEASE}.tar.bz2 | tar xvjf - -C /usr/src/buildroot --strip-components=1
+		curl -sL https://buildroot.org/downloads/buildroot-${BUILDROOT_VERSION}.tar.bz2 | tar xvjf - -C /usr/src/buildroot --strip-components=1
 		"
 
 	config.vm.provision 'shell', privileged: false, inline:
 		"
-		cd #{PROJECT_DIR}
-
-		mkdir -p /usr/src/buildroot/package/conntrack-tools/
-		cp conntrack-tools/* /usr/src/buildroot/package/conntrack-tools/
-	
-		mkdir -p /usr/src/buildroot/package/slirp4netns/
-		cp slirp4netns/* /usr/src/buildroot/package/slirp4netns/
-
-		mkdir -p /usr/src/buildroot/package/strongswan/
-		cp strongswan/* /usr/src/buildroot/package/strongswan/
-
-		mkdir -p /usr/src/buildroot/package/busybox/
-		cp busybox.config /usr/src/buildroot/package/busybox/
-
-		cat buildroot/config buildroot/#{ARCH}config >/usr/src/buildroot/.config
-
+		set -e -x
 		cd /usr/src/buildroot/
-
-		patch -p1 -i #{PROJECT_DIR}/package/Config.patch
+		cat #{PROJECT_DIR}/buildroot/config #{PROJECT_DIR}/buildroot/#{ARCH}config >.config
+		cp -a #{PROJECT_DIR}/package/. package/
+		for p in #{PROJECT_DIR}/patches/*.patch; do patch -p1 -i $p; done
 
 		# make oldconfig
 		"
