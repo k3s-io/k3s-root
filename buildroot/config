@@ -3011,7 +3011,8 @@ BR2_PACKAGE_EBTABLES=y
 #
 # ejabberd needs erlang, toolchain w/ C++
 #
-# BR2_PACKAGE_ETHTOOL is not set
+BR2_PACKAGE_ETHTOOL=y
+# BR2_PACKAGE_ETHTOOL_PRETTY_PRINT is not set
 
 #
 # faifa needs a toolchain w/ dynamic library, threads
