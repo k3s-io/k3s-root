@@ -44,6 +44,7 @@ WORKDIR /usr/src
 RUN mkdir bin && \
     cp -d buildroot/output/target/usr/sbin/*tables* bin/ && \
     cp buildroot/output/target/usr/sbin/conntrack bin/ && \
+    cp buildroot/output/target/usr/sbin/ethtool bin/ && \
     cp buildroot/output/target/usr/sbin/ipset bin/ && \
     cp buildroot/output/target/usr/bin/find bin/ && \
     cp buildroot/output/target/usr/bin/pigz bin/ && \
