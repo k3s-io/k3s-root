@@ -47,6 +47,7 @@ RUN mkdir bin && \
     cp buildroot/output/target/usr/sbin/ethtool bin/ && \
     cp buildroot/output/target/usr/sbin/ipset bin/ && \
     cp buildroot/output/target/usr/bin/find bin/ && \
+    cp buildroot/output/target/usr/bin/nsenter bin/ && \
     cp buildroot/output/target/usr/bin/pigz bin/ && \
     cp buildroot/output/target/usr/bin/slirp4netns bin/ && \
     cp buildroot/output/target/usr/bin/socat bin/ && \
