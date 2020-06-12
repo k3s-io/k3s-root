@@ -1,0 +1,10 @@
+#!/bin/sh
+set -ex
+
+cd "$(dirname $0)"
+
+echo "Buildarch is $BUILDARCH"
+
+./download
+./build
+./package

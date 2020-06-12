@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export BUILDROOT_VERSION=2020.02.2
+
+mkdir -p /usr/src/buildroot
+
+curl -fL https://buildroot.org/downloads/buildroot-${BUILDROOT_VERSION}.tar.bz2 | tar xvjf - -C /usr/src/buildroot --strip-components=1

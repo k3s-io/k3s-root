@@ -1,0 +1,19 @@
+#!/bin/bash
+
+pushd /usr/src/buildroot
+
+cp -rfv /source/package/* package/
+cp /source/buildroot/config /usr/src/buildroot/.config
+cp /source/buildroot/${BUILDARCH}config /usr/src/buildroot/.config-arch
+cat .config-arch >> .config
+
+mkdir -p patches
+
+cp -rfv /source/patches/* patches/
+
+for p in patches/*.patch; do patch -p1 -i $p; done
+
+make oldconfig
+make
+
+popd
