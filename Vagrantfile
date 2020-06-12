@@ -76,7 +76,7 @@ Vagrant.configure('2') do |config|
 
 	config.vm.provision 'shell', privileged: false, inline:
 		"
-		BUILDROOT_VERSION=$(grep BUILDROOT_VERSION #{PROJECT_DIR}/Dockerfile | cut -f2 -d=)
+		BUILDROOT_VERSION=$(grep BUILDROOT_VERSION #{PROJECT_DIR}/scripts/download | cut -f2 -d=)
 		echo 'Downloading and extracting buildroot' ${BUILDROOT_VERSION}
 		sudo mkdir -m 777 -p /usr/src/buildroot
 		curl -sL https://buildroot.org/downloads/buildroot-${BUILDROOT_VERSION}.tar.bz2 | tar xvjf - -C /usr/src/buildroot --strip-components=1
