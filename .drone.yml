@@ -4,9 +4,6 @@ name: k3s-root-linux-amd64
 platform:
   os: linux
   arch: amd64
-
-workspace:
-  path: /workdir
     
 steps:
   - name: build-amd64
@@ -29,7 +26,7 @@ steps:
       checksum_flatten: true
       prerelease: true
       files:
-      - "/workdir/dist/k3s-*amd64.tar"
+      - "dist/k3s-*amd64.tar"
     when:
       instance:
       - drone-publish.rancher.io
@@ -48,9 +45,6 @@ name: k3s-root-linux-arm64
 platform:
   os: linux
   arch: amd64
-
-workspace:
-  path: /workdir
     
 steps:
   - name: build-arm64
@@ -73,7 +67,7 @@ steps:
       checksum_flatten: true
       prerelease: true
       files:
-      - "/workdir/dist/k3s-*arm64.tar"
+      - "dist/k3s-*arm64.tar"
     when:
       instance:
       - drone-publish.rancher.io
@@ -92,9 +86,6 @@ name: k3s-root-linux-arm
 platform:
   os: linux
   arch: amd64
-
-workspace:
-  path: /workdir
     
 steps:
   - name: build-arm
@@ -117,7 +108,7 @@ steps:
       checksum_flatten: true
       prerelease: true
       files:
-      - "/workdir/dist/k3s-*arm.tar"
+      - "dist/k3s-*arm.tar"
     when:
       instance:
       - drone-publish.rancher.io
@@ -136,9 +127,6 @@ name: k3s-root-linux-ppc64le
 platform:
   os: linux
   arch: amd64
-
-workspace:
-  path: /workdir
     
 steps:
   - name: build-ppc64le
@@ -161,7 +149,7 @@ steps:
       checksum_flatten: true
       prerelease: true
       files:
-      - "/workdir/dist/k3s-*ppc64le.tar"
+      - "dist/k3s-*ppc64le.tar"
     when:
       instance:
       - drone-publish.rancher.io
