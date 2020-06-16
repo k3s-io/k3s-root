@@ -13,7 +13,7 @@ cp -rfv /source/patches/* patches/
 
 for p in patches/*.patch; do patch -p1 -i $p; done
 
-make oldconfig
-make
+make -s oldconfig
+make -s
 
 popd
