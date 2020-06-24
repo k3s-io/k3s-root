@@ -144,6 +144,13 @@ os_detect() {
 
     case "$lsb_dist" in
 
+    alpine)
+        # Alpine is using iptables-legacy by default when you apk add iptables. There exists a iptables-nft subset of commands but they are not
+        # used by default.
+        detected_via=os
+        mode=legacy
+        ;;
+
     ubuntu)
         # By default, Ubuntu is using iptables in legacy mode. Ideally, this should have been already caught by the alternatives check.
         detected_via=os
@@ -198,7 +205,7 @@ os_detect() {
 
         # We are running an operating system we don't know, default to nf_tables.
     *)
-        detected_via=os
+        detected_via=unknownos
         mode=nft
         ;;
 
