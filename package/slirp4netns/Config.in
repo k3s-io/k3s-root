@@ -1,4 +1,0 @@
-config BR2_PACKAGE_SLIRP4NETNS
-	bool "slirp4netns"
-	help
-	  slirp4netns

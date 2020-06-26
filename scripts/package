@@ -12,7 +12,6 @@ cp buildroot/output/target/usr/sbin/ipset /source/artifacts/${BUILDARCH}/bin/
 cp buildroot/output/target/usr/bin/find /source/artifacts/${BUILDARCH}/bin/ 
 cp buildroot/output/target/usr/bin/nsenter /source/artifacts/${BUILDARCH}/bin/ 
 cp buildroot/output/target/usr/bin/pigz /source/artifacts/${BUILDARCH}/bin/ 
-cp buildroot/output/target/usr/bin/slirp4netns /source/artifacts/${BUILDARCH}/bin/ 
 cp buildroot/output/target/usr/bin/socat /source/artifacts/${BUILDARCH}/bin/ 
 cp buildroot/output/target/usr/bin/coreutils /source/artifacts/${BUILDARCH}/bin/ 
 cp buildroot/output/target/sbin/ip /source/artifacts/${BUILDARCH}/bin/ 
@@ -21,6 +20,20 @@ cp buildroot/output/target/sbin/losetup /source/artifacts/${BUILDARCH}/bin/
 cp buildroot/output/target/bin/busybox /source/artifacts/${BUILDARCH}/bin/ 
 cp buildroot/output/target/usr/sbin/swanctl /source/artifacts/${BUILDARCH}/bin/ 
 cp buildroot/output/target/usr/libexec/ipsec/charon /source/artifacts/${BUILDARCH}/bin/
+
+# download pre-built binaries
+SLIRP4NETNS_VERSION="v1.1.4"
+uname_m="${BUILDARCH}"
+case "${BUILDARCH}" in
+    "amd64")
+        uname_m="x86_64" ;;
+    "arm64")
+        uname_m="aarch64" ;;
+    "arm")
+        uname_m="armv7l" ;;
+esac
+curl -o /source/artifacts/${BUILDARCH}/bin/slirp4netns -sSL https://github.com/rootless-containers/slirp4netns/releases/download/${SLIRP4NETNS_VERSION}/slirp4netns-${uname_m}
+chmod +x /source/artifacts/${BUILDARCH}/bin/slirp4netns
 
 # save etc
 cp -rp buildroot/output/target/var/lib/rancher/k3s/agent/* /source/artifacts/${BUILDARCH}/etc/
