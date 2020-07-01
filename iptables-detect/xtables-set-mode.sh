@@ -42,7 +42,7 @@ validate() {
 set_nft() {
     base_path=$(dirname $(which $script_name))
 
-    for i in iptables iptables-save iptables-restore ip6tables; do ln -sf "xtables-nft-multi" "$base_path/$i"; done
+    for i in iptables iptables-save iptables-restore ip6tables ip6tables-save ip6tables-restore; do ln -sf "xtables-nft-multi" "$base_path/$i"; done
 
     exit
 }
@@ -50,7 +50,7 @@ set_nft() {
 set_legacy() {
     base_path=$(dirname $(which $script_name))
 
-    for i in iptables iptables-save iptables-restore ip6tables; do ln -sf "xtables-legacy-multi" "$base_path/$i"; done
+    for i in iptables iptables-save iptables-restore ip6tables ip6tables-save ip6tables-restore; do ln -sf "xtables-legacy-multi" "$base_path/$i"; done
 
     exit
 }
