@@ -88,7 +88,6 @@ Vagrant.configure('2') do |config|
 		cd /usr/src/buildroot/
 		cat #{PROJECT_DIR}/buildroot/config #{PROJECT_DIR}/buildroot/#{ARCH}config >.config
 		cp -a #{PROJECT_DIR}/package/. package/
-		for p in #{PROJECT_DIR}/patches/*.patch; do patch -p1 -i $p; done
 
 		# make oldconfig
 		"

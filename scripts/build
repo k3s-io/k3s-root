@@ -7,12 +7,6 @@ cp /source/buildroot/config /usr/src/buildroot/.config
 cp /source/buildroot/${BUILDARCH}config /usr/src/buildroot/.config-arch
 cat .config-arch >> .config
 
-mkdir -p patches
-
-cp -rfv /source/patches/* patches/
-
-for p in patches/*.patch; do patch -p1 -i $p; done
-
 make -s oldconfig
 make -s
 
