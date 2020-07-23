@@ -171,7 +171,8 @@ os_detect() {
 
     oracleserver)
         dist_version="$(. /etc/os-release && echo "$VERSION_ID")"
-        if [ "$dist_version" -ge 8 ]; then
+        maj_ver=$(sed -E -e "s/^([0-9]+)\.?[0-9]*$/\1/" <<<$dist_version)
+        if [ "$maj_ver" -ge 8 ]; then
             detected_via=os
             mode=nft
         else
@@ -194,7 +195,8 @@ os_detect() {
 
     centos | redhat)
         dist_version="$(. /etc/os-release && echo "$VERSION_ID")"
-        if [ "$dist_version" -ge 8 ]; then
+        maj_ver=$(sed -E -e "s/^([0-9]+)\.?[0-9]*$/\1/" <<<$dist_version)
+        if [ "$maj_ver" -ge 8 ]; then    
             detected_via=os
             mode=nft
         else
