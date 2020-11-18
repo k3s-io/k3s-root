@@ -1,164 +1,185 @@
 ---
 kind: pipeline
+type: docker
 name: k3s-root-linux-amd64
+
 platform:
   os: linux
   arch: amd64
-    
+
 steps:
-  - name: build-amd64
-    image: rancher/dapper:v0.5.0
-    environment:
-      BUILDARCH: amd64
-    commands:
-    - dapper ci
-    volumes:
-    - name: docker
-      path: /var/run/docker.sock
-  - name: github-amd64-binary-release
-    image: plugins/github-release
-    settings:
-      api_key:
-        from_secret: github_token
-      checksum:
-      - sha256
-      checksum_file: CHECKSUMsum-amd64.txt
-      checksum_flatten: true
-      prerelease: true
-      files:
-      - "dist/k3s-*amd64.tar"
-    when:
-      instance:
-      - drone-publish.rancher.io
-      ref:
-      - refs/head/master
-      - refs/tags/*
-      event:
-      - tag
+- name: build-amd64
+  image: rancher/dapper:v0.5.0
+  commands:
+  - dapper ci
+  environment:
+    BUILDARCH: amd64
+  volumes:
+  - name: docker
+    path: /var/run/docker.sock
+
+- name: github-amd64-binary-release
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    checksum:
+    - sha256
+    checksum_file: CHECKSUMsum-amd64.txt
+    checksum_flatten: true
+    files:
+    - dist/k3s-*amd64.tar
+    prerelease: true
+  when:
+    event:
+    - tag
+    instance:
+    - drone-publish.k3s.io
+    ref:
+    - refs/head/master
+    - refs/tags/*
+
 volumes:
 - name: docker
   host:
     path: /var/run/docker.sock
+
 ---
 kind: pipeline
+type: docker
 name: k3s-root-linux-arm64
+
 platform:
   os: linux
   arch: amd64
-    
+
 steps:
-  - name: build-arm64
-    image: rancher/dapper:v0.5.0
-    environment:
-      BUILDARCH: arm64
-    commands:
-    - dapper ci
-    volumes:
-    - name: docker
-      path: /var/run/docker.sock
-  - name: github-arm64-binary-release
-    image: plugins/github-release
-    settings:
-      api_key:
-        from_secret: github_token
-      checksum:
-      - sha256
-      checksum_file: CHECKSUMsum-arm64.txt
-      checksum_flatten: true
-      prerelease: true
-      files:
-      - "dist/k3s-*arm64.tar"
-    when:
-      instance:
-      - drone-publish.rancher.io
-      ref:
-      - refs/head/master
-      - refs/tags/*
-      event:
-      - tag
+- name: build-arm64
+  image: rancher/dapper:v0.5.0
+  commands:
+  - dapper ci
+  environment:
+    BUILDARCH: arm64
+  volumes:
+  - name: docker
+    path: /var/run/docker.sock
+
+- name: github-arm64-binary-release
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    checksum:
+    - sha256
+    checksum_file: CHECKSUMsum-arm64.txt
+    checksum_flatten: true
+    files:
+    - dist/k3s-*arm64.tar
+    prerelease: true
+  when:
+    event:
+    - tag
+    instance:
+    - drone-publish.k3s.io
+    ref:
+    - refs/head/master
+    - refs/tags/*
+
 volumes:
 - name: docker
   host:
     path: /var/run/docker.sock
+
 ---
 kind: pipeline
+type: docker
 name: k3s-root-linux-arm
+
 platform:
   os: linux
   arch: amd64
-    
+
 steps:
-  - name: build-arm
-    image: rancher/dapper:v0.5.0
-    environment:
-      BUILDARCH: arm
-    commands:
-    - dapper ci
-    volumes:
-    - name: docker
-      path: /var/run/docker.sock
-  - name: github-arm-binary-release
-    image: plugins/github-release
-    settings:
-      api_key:
-        from_secret: github_token
-      checksum:
-      - sha256
-      checksum_file: CHECKSUMsum-arm.txt
-      checksum_flatten: true
-      prerelease: true
-      files:
-      - "dist/k3s-*arm.tar"
-    when:
-      instance:
-      - drone-publish.rancher.io
-      ref:
-      - refs/head/master
-      - refs/tags/*
-      event:
-      - tag
+- name: build-arm
+  image: rancher/dapper:v0.5.0
+  commands:
+  - dapper ci
+  environment:
+    BUILDARCH: arm
+  volumes:
+  - name: docker
+    path: /var/run/docker.sock
+
+- name: github-arm-binary-release
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    checksum:
+    - sha256
+    checksum_file: CHECKSUMsum-arm.txt
+    checksum_flatten: true
+    files:
+    - dist/k3s-*arm.tar
+    prerelease: true
+  when:
+    event:
+    - tag
+    instance:
+    - drone-publish.k3s.io
+    ref:
+    - refs/head/master
+    - refs/tags/*
+
 volumes:
 - name: docker
   host:
     path: /var/run/docker.sock
+
 ---
 kind: pipeline
+type: docker
 name: k3s-root-linux-ppc64le
+
 platform:
   os: linux
   arch: amd64
-    
+
 steps:
-  - name: build-ppc64le
-    image: rancher/dapper:v0.5.0
-    environment:
-      BUILDARCH: ppc64le
-    commands:
-    - dapper ci
-    volumes:
-    - name: docker
-      path: /var/run/docker.sock
-  - name: github-ppc64le-binary-release
-    image: plugins/github-release
-    settings:
-      api_key:
-        from_secret: github_token
-      checksum:
-      - sha256
-      checksum_file: CHECKSUMsum-ppc64le.txt
-      checksum_flatten: true
-      prerelease: true
-      files:
-      - "dist/k3s-*ppc64le.tar"
-    when:
-      instance:
-      - drone-publish.rancher.io
-      ref:
-      - refs/head/master
-      - refs/tags/*
-      event:
-      - tag
+- name: build-ppc64le
+  image: rancher/dapper:v0.5.0
+  commands:
+  - dapper ci
+  environment:
+    BUILDARCH: ppc64le
+  volumes:
+  - name: docker
+    path: /var/run/docker.sock
+
+- name: github-ppc64le-binary-release
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    checksum:
+    - sha256
+    checksum_file: CHECKSUMsum-ppc64le.txt
+    checksum_flatten: true
+    files:
+    - dist/k3s-*ppc64le.tar
+    prerelease: true
+  when:
+    event:
+    - tag
+    instance:
+    - drone-publish.k3s.io
+    ref:
+    - refs/head/master
+    - refs/tags/*
+
 volumes:
 - name: docker
   host:
     path: /var/run/docker.sock
+
+...
