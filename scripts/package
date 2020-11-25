@@ -23,6 +23,7 @@ cp buildroot/output/target/usr/libexec/ipsec/charon /source/artifacts/${BUILDARC
 
 # download pre-built binaries
 SLIRP4NETNS_VERSION="v1.1.4"
+FUSE_OVERLAYFS="v1.2.0"
 uname_m="${BUILDARCH}"
 case "${BUILDARCH}" in
     "amd64")
@@ -34,6 +35,8 @@ case "${BUILDARCH}" in
 esac
 curl -o /source/artifacts/${BUILDARCH}/bin/slirp4netns -sSL https://github.com/rootless-containers/slirp4netns/releases/download/${SLIRP4NETNS_VERSION}/slirp4netns-${uname_m}
 chmod +x /source/artifacts/${BUILDARCH}/bin/slirp4netns
+curl -o /source/artifacts/${BUILDARCH}/bin/fuse-overlayfs -sSL https://github.com/containers/fuse-overlayfs/releases/download/${FUSE_OVERLAYFS_VERSION}/fuse-overlayfs-${uname_m}
+chmod +x /source/artifacts/${BUILDARCH}/bin/fuse-overlayfs
 
 # save etc
 cp -rp buildroot/output/target/var/lib/rancher/k3s/agent/* /source/artifacts/${BUILDARCH}/etc/
