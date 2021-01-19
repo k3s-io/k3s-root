@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eu
 
 mkdir -p /source/artifacts/${BUILDARCH}/bin /source/artifacts/${BUILDARCH}/xtables-bin /source/artifacts/${BUILDARCH}/etc /source/dist
 
