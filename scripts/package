@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eu
 
 mkdir -p /source/artifacts/${BUILDARCH}/bin /source/artifacts/${BUILDARCH}/xtables-bin /source/artifacts/${BUILDARCH}/etc /source/dist
 
@@ -23,7 +24,7 @@ cp buildroot/output/target/usr/libexec/ipsec/charon /source/artifacts/${BUILDARC
 
 # download pre-built binaries
 SLIRP4NETNS_VERSION="v1.1.8"
-FUSE_OVERLAYFS="v1.3.0"
+FUSE_OVERLAYFS_VERSION="v1.3.0"
 uname_m="${BUILDARCH}"
 case "${BUILDARCH}" in
     "amd64")
