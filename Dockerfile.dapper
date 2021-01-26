@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 AS ubuntu
+FROM ubuntu:20.04 AS ubuntu
 RUN yes | unminimize
 
 # setup prereqs
@@ -6,6 +6,7 @@ RUN apt-get update
 RUN apt-get install -y \
     build-essential \
     ccache \
+    cpio \
     gcc \
     git \
     g++ \
@@ -21,6 +22,10 @@ RUN apt-get install -y \
 ENV DAPPER_SOURCE /source
 ENV DAPPER_OUTPUT ./artifacts ./dist
 ENV DAPPER_ENV BUILDARCH
+ENV DAPPER_RUN_ARGS -v k3s-root-cache:/var/cache/dl
+ENV BR2_DL_DIR /var/cache/dl 
+# Required to build as root, even in Docker
+ENV FORCE_UNSAFE_CONFIGURE 1 
 ENV HOME ${DAPPER_SOURCE}
 WORKDIR ${DAPPER_SOURCE}
 

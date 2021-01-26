@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 pushd /usr/src/buildroot
 
 cp -rfv /source/package/* package/
@@ -8,6 +10,6 @@ cp /source/buildroot/${BUILDARCH}config /usr/src/buildroot/.config-arch
 cat .config-arch >> .config
 
 make -s oldconfig
-make -s
+make -s -j$(nproc)
 
 popd
