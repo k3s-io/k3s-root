@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -ex
+shopt -s nullglob
+
+pushd /usr/src/buildroot
+
+for PATCH in /source/patches/*.patch; do
+  patch --verbose -t -p1 -i $PATCH
+done
