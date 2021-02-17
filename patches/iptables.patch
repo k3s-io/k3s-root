@@ -1,0 +1,19 @@
+diff -ru buildroot.orig/package/iptables/Config.in buildroot/package/iptables/Config.in
+--- buildroot.orig/package/iptables/Config.in	2020-12-27 14:23:34.000000000 +0000
++++ buildroot/package/iptables/Config.in	2021-02-17 23:46:17.941771567 +0000
+@@ -16,7 +16,6 @@
+ config BR2_PACKAGE_IPTABLES_NFTABLES
+ 	bool "nftables compat"
+ 	# uses dlfcn
+-	depends on !BR2_STATIC_LIBS
+ 	depends on BR2_USE_WCHAR
+ 	depends on BR2_TOOLCHAIN_HEADERS_AT_LEAST_3_12
+ 	select BR2_PACKAGE_LIBMNL
+@@ -26,6 +25,6 @@
+
+ comment "nftables compat needs a toolchain w/ wchar, dynamic library, headers >= 3.12"
+ 	depends on !BR2_TOOLCHAIN_HEADERS_AT_LEAST_3_12 || \
+-		!BR2_USE_WCHAR || BR2_STATIC_LIBS
++		!BR2_USE_WCHAR
+
+ endif

@@ -6,5 +6,6 @@ cd "$(dirname $0)"
 echo "Buildarch is $BUILDARCH"
 
 ./download
+./patch
 ./build
 ./package
