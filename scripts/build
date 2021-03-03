@@ -4,10 +4,23 @@ set -ex
 
 pushd /usr/src/buildroot
 
+config()
+{
+    cp /source/buildroot/config /usr/src/buildroot/.config
+    cp /source/buildroot/${BUILDARCH}config /usr/src/buildroot/.config-arch
+    cat .config-arch >> .config
+}
+
 cp -rfv /source/package/* package/
-cp /source/buildroot/config /usr/src/buildroot/.config
-cp /source/buildroot/${BUILDARCH}config /usr/src/buildroot/.config-arch
-cat .config-arch >> .config
+config
+
+if [ "${BUILDARCH}" == "s390x" ]; then
+    sed -i '/BR2_STATIC_LIBS/d' .config
+    echo 'BR2_SHARED_LIBS=y' >> .config
+    make -s oldconfig
+    make toolchain
+    config
+fi
 
 make -s oldconfig
 make -s -j$(nproc)
