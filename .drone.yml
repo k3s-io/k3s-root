@@ -182,4 +182,48 @@ volumes:
   host:
     path: /var/run/docker.sock
 
-...
+---
+kind: pipeline
+type: docker
+name: k3s-root-linux-s390x
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build-s390x
+  image: rancher/dapper:v0.5.0
+  commands:
+  - dapper ci
+  environment:
+    BUILDARCH: s390x
+  volumes:
+  - name: docker
+    path: /var/run/docker.sock
+
+- name: github-s390x-binary-release
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    checksum:
+    - sha256
+    checksum_file: CHECKSUMsum-s390x.txt
+    checksum_flatten: true
+    files:
+    - dist/k3s-*s390x.tar
+    prerelease: true
+  when:
+    event:
+    - tag
+    instance:
+    - drone-publish.k3s.io
+    ref:
+    - refs/head/master
+    - refs/tags/*
+
+volumes:
+- name: docker
+  host:
+    path: /var/run/docker.sock
