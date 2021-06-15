@@ -23,8 +23,8 @@ cp buildroot/output/target/usr/sbin/swanctl /source/artifacts/${BUILDARCH}/bin/
 cp buildroot/output/target/usr/libexec/ipsec/charon /source/artifacts/${BUILDARCH}/bin/
 
 # download pre-built binaries
-SLIRP4NETNS_VERSION="v1.1.8"
-FUSE_OVERLAYFS_VERSION="v1.3.0"
+SLIRP4NETNS_VERSION="v1.1.11"
+FUSE_OVERLAYFS_VERSION="v1.5.0"
 uname_m="${BUILDARCH}"
 case "${BUILDARCH}" in
     "amd64")
