@@ -2,7 +2,7 @@
 
 set -ex
 
-export BUILDROOT_VERSION=2020.11.1
+export BUILDROOT_VERSION=2021.02.3
 
 mkdir -p /usr/src/buildroot
 

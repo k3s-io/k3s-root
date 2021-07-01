@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2020.11.1 Configuration
+# Buildroot 2021.02.3 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -173,12 +173,11 @@ BR2_TOOLCHAIN_BUILDROOT_LIBC="musl"
 # BR2_KERNEL_HEADERS_4_14 is not set
 # BR2_KERNEL_HEADERS_4_19 is not set
 BR2_KERNEL_HEADERS_5_4=y
-# BR2_KERNEL_HEADERS_5_8 is not set
-# BR2_KERNEL_HEADERS_5_9 is not set
+# BR2_KERNEL_HEADERS_5_10 is not set
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
-BR2_DEFAULT_KERNEL_HEADERS="5.4.83"
+BR2_DEFAULT_KERNEL_HEADERS="5.4.125"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL=y
 
@@ -187,10 +186,10 @@ BR2_PACKAGE_MUSL=y
 #
 BR2_PACKAGE_HOST_BINUTILS_SUPPORTS_CFI=y
 # BR2_BINUTILS_VERSION_2_32_X is not set
-# BR2_BINUTILS_VERSION_2_33_X is not set
 # BR2_BINUTILS_VERSION_2_34_X is not set
 BR2_BINUTILS_VERSION_2_35_X=y
-BR2_BINUTILS_VERSION="2.35.1"
+# BR2_BINUTILS_VERSION_2_36_X is not set
+BR2_BINUTILS_VERSION="2.35.2"
 BR2_BINUTILS_EXTRA_CONFIG_OPTIONS=""
 
 #
@@ -199,7 +198,7 @@ BR2_BINUTILS_EXTRA_CONFIG_OPTIONS=""
 # BR2_GCC_VERSION_8_X is not set
 # BR2_GCC_VERSION_9_X is not set
 BR2_GCC_VERSION_10_X=y
-BR2_GCC_VERSION="10.2.0"
+BR2_GCC_VERSION="10.3.0"
 BR2_EXTRA_GCC_CONFIG_OPTIONS=""
 # BR2_TOOLCHAIN_BUILDROOT_CXX is not set
 # BR2_TOOLCHAIN_BUILDROOT_FORTRAN is not set
@@ -458,11 +457,14 @@ BR2_PACKAGE_MJPEGTOOLS_SIMD_SUPPORT=y
 # BR2_PACKAGE_MOTION is not set
 
 #
-# mpd needs a toolchain w/ C++, threads, wchar, gcc >= 6
+# mpd needs a toolchain w/ C++, threads, wchar, gcc >= 7, host gcc >= 7
 #
 # BR2_PACKAGE_MPD_MPC is not set
 # BR2_PACKAGE_MPG123 is not set
-# BR2_PACKAGE_MPV is not set
+
+#
+# mpv needs a toolchain w/ C++, threads, gcc >= 4.9
+#
 # BR2_PACKAGE_MULTICAT is not set
 # BR2_PACKAGE_MUSEPACK is not set
 
@@ -482,7 +484,7 @@ BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 #
 
 #
-# tovid needs a toolchain w/ threads, C++, wchar, gcc >= 4.5
+# tovid needs a toolchain w/ threads, C++, wchar, gcc >= 4.9
 #
 
 #
@@ -558,10 +560,14 @@ BR2_PACKAGE_PIGZ=y
 #
 # clinfo needs an OpenCL provider
 #
+# BR2_PACKAGE_COREMARK is not set
+# BR2_PACKAGE_COREMARK_PRO is not set
 
 #
 # dacapo needs OpenJDK
 #
+BR2_PACKAGE_DELVE_ARCH_SUPPORTS=y
+# BR2_PACKAGE_DELVE is not set
 # BR2_PACKAGE_DHRYSTONE is not set
 # BR2_PACKAGE_DIEHARDER is not set
 # BR2_PACKAGE_DMALLOC is not set
@@ -584,7 +590,7 @@ BR2_PACKAGE_PIGZ=y
 #
 
 #
-# fwts needs a glibc toolchain w/ wchar, threads
+# fwts needs a glibc toolchain w/ wchar, threads, dynamic library
 #
 BR2_PACKAGE_GDB_ARCH_SUPPORTS=y
 
@@ -640,6 +646,11 @@ BR2_PACKAGE_OPROFILE_ARCH_SUPPORTS=y
 
 #
 # pcm-tools needs a toolchain w/ C++
+#
+BR2_PACKAGE_PLY_ARCH_SUPPORTS=y
+
+#
+# ply needs a toolchain w/ dynamic library, headers >= 4.14
 #
 # BR2_PACKAGE_PV is not set
 
@@ -834,6 +845,7 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 # BR2_PACKAGE_GHOSTSCRIPT_FONTS is not set
 # BR2_PACKAGE_INCONSOLATA is not set
 # BR2_PACKAGE_LIBERATION is not set
+# BR2_PACKAGE_WQY_ZENHEI is not set
 
 #
 # Icons
@@ -863,6 +875,7 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 #
 # flare-engine needs a toolchain w/ C++, dynamic library
 #
+# BR2_PACKAGE_FROTZ is not set
 
 #
 # gnuchess needs a toolchain w/ C++, threads
@@ -884,6 +897,7 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 #
 # stella needs a toolchain w/ dynamic library, C++, threads, gcc >= 6
 #
+# BR2_PACKAGE_XORCURSES is not set
 
 #
 # Graphic libraries and applications (graphic/text)
@@ -1050,6 +1064,8 @@ BR2_PACKAGE_QT5_JSCORE_AVAILABLE=y
 # BR2_PACKAGE_LINUX_FIRMWARE is not set
 # BR2_PACKAGE_MURATA_CYW_FW is not set
 # BR2_PACKAGE_ODROIDC2_FIRMWARE is not set
+# BR2_PACKAGE_QCOM_DB410C_FIRMWARE is not set
+# BR2_PACKAGE_RCW_SMARC_SAL28 is not set
 # BR2_PACKAGE_UX500_FIRMWARE is not set
 # BR2_PACKAGE_WILC1000_FIRMWARE is not set
 # BR2_PACKAGE_WILINK_BT_FIRMWARE is not set
@@ -1069,7 +1085,7 @@ BR2_PACKAGE_QT5_JSCORE_AVAILABLE=y
 #
 
 #
-# avrdude needs a uClibc or glibc toolchain w/ threads, wchar, dynamic library
+# avrdude needs a uClibc or glibc toolchain w/ threads, wchar, dynamic library, gcc >= 4.9
 #
 
 #
@@ -1085,7 +1101,7 @@ BR2_PACKAGE_QT5_JSCORE_AVAILABLE=y
 #
 
 #
-# cc-tool needs a toolchain w/ C++, threads, wchar
+# cc-tool needs a toolchain w/ C++, threads, wchar, gcc >= 4.9 
 #
 # BR2_PACKAGE_CDRKIT is not set
 
@@ -1167,6 +1183,10 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 #
 # lcdproc needs a toolchain w/  dynamic library
 #
+
+#
+# libiec61850 needs a toolchain w/ C++, threads, dynamic library
+#
 # BR2_PACKAGE_LIBUBOOTENV is not set
 # BR2_PACKAGE_LIBUIO is not set
 
@@ -1214,6 +1234,7 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 #
 # nvidia-driver needs a glibc toolchain
 #
+# BR2_PACKAGE_NVIDIA_MODPROBE is not set
 # BR2_PACKAGE_NVME is not set
 
 #
@@ -1222,7 +1243,7 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 # BR2_PACKAGE_OPEN2300 is not set
 
 #
-# openfpgaloader needs a toolchain w/ threads, C++
+# openfpgaloader needs a toolchain w/ threads, C++, gcc >= 4.9
 #
 
 #
@@ -1300,10 +1321,6 @@ BR2_PACKAGE_SEDUTIL_ARCH_SUPPORTS=y
 #
 
 #
-# ti-sgx-libgbm needs udev and a toolchain w/ threads
-#
-
-#
 # ti-sgx-um needs the ti-sgx-km driver
 #
 
@@ -1345,7 +1362,7 @@ BR2_PACKAGE_SEDUTIL_ARCH_SUPPORTS=y
 #
 
 #
-# usbutils needs udev /dev management and toolchain w/ threads
+# usbutils needs udev /dev management and toolchain w/ threads, gcc >= 4.9
 #
 # BR2_PACKAGE_W_SCAN is not set
 # BR2_PACKAGE_WIPE is not set
@@ -1413,7 +1430,7 @@ BR2_PACKAGE_OPENJDK_ARCH_SUPPORTS=y
 #
 
 #
-# openjdk needs glibc, and a toolchain w/ wchar, dynamic library, threads, C++
+# openjdk needs glibc, and a toolchain w/ wchar, dynamic library, threads, C++, gcc >= 4.9
 #
 # BR2_PACKAGE_PERL is not set
 # BR2_PACKAGE_PHP is not set
@@ -1424,6 +1441,10 @@ BR2_PACKAGE_OPENJDK_ARCH_SUPPORTS=y
 
 #
 # python3 needs a toolchain w/ wchar, threads, dynamic library
+#
+
+#
+# quickjs needs a glibc or musl toolchain w/ gcc >= 4.9, host gcc >= 4.9, dynamic library
 #
 
 #
@@ -1449,10 +1470,6 @@ BR2_PACKAGE_OPENJDK_ARCH_SUPPORTS=y
 
 #
 # aubio needs a toolchain w/ threads, dynamic library
-#
-
-#
-# audiofile needs a toolchain w/ C++
 #
 # BR2_PACKAGE_BCG729 is not set
 
@@ -1644,6 +1661,7 @@ BR2_PACKAGE_LIBGPG_ERROR_SYSCFG="x86_64-unknown-linux-gnu"
 #
 # BR2_PACKAGE_MBEDTLS is not set
 # BR2_PACKAGE_NETTLE is not set
+BR2_PACKAGE_LIBOPENSSL_ARCH_SUPPORTS=y
 # BR2_PACKAGE_OPENSSL is not set
 BR2_PACKAGE_PROVIDES_HOST_OPENSSL="host-libopenssl"
 
@@ -1652,6 +1670,10 @@ BR2_PACKAGE_PROVIDES_HOST_OPENSSL="host-libopenssl"
 #
 # BR2_PACKAGE_RHASH is not set
 # BR2_PACKAGE_TINYDTLS is not set
+
+#
+# tpm2-pkcs11 needs a toolchain w/ dynamic library, threads
+#
 
 #
 # tpm2-tss needs a toolchain w/ dynamic library
@@ -1684,6 +1706,7 @@ BR2_PACKAGE_PROVIDES_HOST_OPENSSL="host-libopenssl"
 #
 # libgit2 needs a toolchain w/ dynamic library
 #
+# BR2_PACKAGE_LIBMDBX is not set
 
 #
 # libodb needs a toolchain w/ C++, threads
@@ -1840,7 +1863,7 @@ BR2_PACKAGE_JPEG_SIMD_SUPPORT=y
 # BR2_PACKAGE_JPEG is not set
 
 #
-# kms++ needs a toolchain w/ threads, C++, gcc >= 4.8, headers >= 3.8
+# kms++ needs a toolchain w/ threads, C++, gcc >= 4.8, headers >= 4.11, wchar
 #
 # BR2_PACKAGE_LCMS2 is not set
 
@@ -1941,7 +1964,7 @@ BR2_PACKAGE_JPEG_SIMD_SUPPORT=y
 #
 
 #
-# pipewire needs udev and a toolchain w/ threads
+# pipewire needs udev and a toolchain w/ threads, headers >= 3.18
 #
 # BR2_PACKAGE_PIXMAN is not set
 
@@ -1998,12 +2021,12 @@ BR2_PACKAGE_WPEWEBKIT_ARCH_SUPPORTS=y
 #
 
 #
-# acsccid needs a toolchain w/ threads, dynamic library
+# acsccid needs a toolchain w/ threads, dynamic library, gcc >= 4.9
 #
 # BR2_PACKAGE_C_PERIPHERY is not set
 
 #
-# ccid needs a toolchain w/ threads, dynamic library
+# ccid needs a toolchain w/ threads, dynamic library, gcc >= 4.9
 #
 
 #
@@ -2013,11 +2036,11 @@ BR2_PACKAGE_GNU_EFI_ARCH_SUPPORTS=y
 # BR2_PACKAGE_GNU_EFI is not set
 
 #
-# hackrf needs a toolchain w/ threads, dynamic library
+# hackrf needs a toolchain w/ threads, dynamic library, gcc >= 4.9
 #
 
 #
-# hidapi needs udev /dev management and a toolchain w/ NPTL threads
+# hidapi needs udev /dev management and a toolchain w/ NPTL, threads, gcc >= 4.9
 #
 # BR2_PACKAGE_JITTERENTROPY_LIBRARY is not set
 
@@ -2061,6 +2084,10 @@ BR2_PACKAGE_GNU_EFI_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LIBMBIM is not set
 # BR2_PACKAGE_LIBNFC is not set
 # BR2_PACKAGE_LIBPCIACCESS is not set
+
+#
+# libphidget needs a toolchain w/ threads, dynamic library, gcc >= 4.9
+#
 
 #
 # libpri needs a kernel to be built
@@ -2121,6 +2148,7 @@ BR2_PACKAGE_MRAA_ARCH_SUPPORTS=y
 # BR2_PACKAGE_ANGULARJS is not set
 # BR2_PACKAGE_BOOTSTRAP is not set
 # BR2_PACKAGE_CHARTJS is not set
+# BR2_PACKAGE_DATATABLES is not set
 
 #
 # duktape needs a toolchain w/ dynamic library
@@ -2130,7 +2158,9 @@ BR2_PACKAGE_MRAA_ARCH_SUPPORTS=y
 # BR2_PACKAGE_JQUERY is not set
 # BR2_PACKAGE_JSMIN is not set
 # BR2_PACKAGE_JSON_JAVASCRIPT is not set
+# BR2_PACKAGE_JSZIP is not set
 # BR2_PACKAGE_OPENLAYERS is not set
+# BR2_PACKAGE_POPPERJS is not set
 BR2_PACKAGE_SPIDERMONKEY_ARCH_SUPPORTS=y
 BR2_PACKAGE_SPIDERMONKEY_JIT_ARCH_SUPPORTS=y
 
@@ -2321,7 +2351,7 @@ BR2_PACKAGE_LIBOPENH264_ARCH_SUPPORTS=y
 #
 
 #
-# mediastreamer needs a toolchain w/ threads, C++, dynamic library
+# mediastreamer needs a toolchain w/ threads, C++, dynamic library, gcc >= 5
 #
 # BR2_PACKAGE_X264 is not set
 
@@ -2519,7 +2549,6 @@ BR2_PACKAGE_LIBTIRPC=y
 # BR2_PACKAGE_LIBUEV is not set
 # BR2_PACKAGE_LIBUHTTPD is not set
 # BR2_PACKAGE_LIBUPNP is not set
-# BR2_PACKAGE_LIBUPNP18 is not set
 
 #
 # libupnpp needs a toolchain w/ C++, threads, gcc >= 4.9
@@ -2531,7 +2560,10 @@ BR2_PACKAGE_LIBTIRPC=y
 # libvncserver needs a toolchain w/ dynamic library
 #
 # BR2_PACKAGE_LIBWEBSOCK is not set
-# BR2_PACKAGE_LIBWEBSOCKETS is not set
+
+#
+# libwebsockets needs a toolchain w/ dynamic library
+#
 
 #
 # libyang needs a toolchain w/ threads, dynamic library
@@ -2568,6 +2600,7 @@ BR2_PACKAGE_LIBTIRPC=y
 #
 # omniORB needs a toolchain w/ C++, threads
 #
+# BR2_PACKAGE_OPEN62541 is not set
 # BR2_PACKAGE_OPENLDAP is not set
 
 #
@@ -2724,10 +2757,7 @@ BR2_PACKAGE_LIBTIRPC=y
 #
 # elfutils needs a uClibc or glibc toolchain w/ wchar, dynamic library, threads
 #
-
-#
-# ell needs a toolchain w/ dynamic library, wchar, headers >= 4.12
-#
+# BR2_PACKAGE_ELL is not set
 # BR2_PACKAGE_FFTW is not set
 
 #
@@ -2794,7 +2824,10 @@ BR2_PACKAGE_LIBATOMIC_OPS_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LIBB64 is not set
 # BR2_PACKAGE_LIBBACKTRACE is not set
 BR2_PACKAGE_LIBBSD_ARCH_SUPPORTS=y
-# BR2_PACKAGE_LIBBSD is not set
+
+#
+# libbsd needs a toolchain w/ dynamic library, threads, wchar
+#
 # BR2_PACKAGE_LIBBYTESIZE is not set
 # BR2_PACKAGE_LIBCAP is not set
 # BR2_PACKAGE_LIBCAP_NG is not set
@@ -2824,6 +2857,10 @@ BR2_PACKAGE_LIBEASTL_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LIBEVENT is not set
 # BR2_PACKAGE_LIBFFI is not set
 # BR2_PACKAGE_LIBGEE is not set
+
+#
+# libgeos needs a toolchain w/ C++, wchar, not binutils bug 21464, 27597
+#
 # BR2_PACKAGE_LIBGLIB2 is not set
 # BR2_PACKAGE_LIBGLOB is not set
 
@@ -3002,6 +3039,7 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 #
 # icu needs a toolchain w/ C++, wchar, threads, gcc >= 4.9, host gcc >= 4.9
 #
+# BR2_PACKAGE_INIH is not set
 # BR2_PACKAGE_LIBCLI is not set
 # BR2_PACKAGE_LIBEDIT is not set
 # BR2_PACKAGE_LIBENCA is not set
@@ -3152,7 +3190,6 @@ BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET=y
 # bluez5-utils needs a toolchain w/ wchar, threads, headers >= 3.4, dynamic library
 #
 # BR2_PACKAGE_BMON is not set
-# BR2_PACKAGE_BOA is not set
 
 #
 # boinc needs a toolchain w/ dynamic library, C++, threads
@@ -3164,13 +3201,14 @@ BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET=y
 #
 # c-icap needs a toolchain w/ threads and dynamic library
 #
-
-#
-# can-utils needs a glibc or uClibc toolchain
-#
+# BR2_PACKAGE_CAN_UTILS is not set
 
 #
 # cannelloni needs a toolchain w/ C++, threads, dynamic library, gcc >= 4.8
+#
+
+#
+# casync needs a glibc toolchain
 #
 # BR2_PACKAGE_CHRONY is not set
 # BR2_PACKAGE_CIVETWEB is not set
@@ -3182,8 +3220,13 @@ BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET=y
 #
 # connman-gtk needs libgtk3 and a glibc or uClibc toolchain w/ wchar, threads, resolver, dynamic library
 #
-BR2_PACKAGE_CONNTRACK_TOOLS=y
+
+#
+# conntrack-tools needs a toolchain w/ threads, dynamic library
+#
 # BR2_PACKAGE_CORKSCREW is not set
+
+BR2_PACKAGE_CONNTRACK_TOOLS=y
 
 #
 # crda needs a toolchain w/ threads, dynamic library
@@ -3240,7 +3283,7 @@ BR2_PACKAGE_ETHTOOL=y
 #
 
 #
-# gerbera needs a toolchain w/ C++, threads, gcc >= 7
+# gerbera needs a toolchain w/ C++, threads, wchar, gcc >= 8
 #
 # BR2_PACKAGE_GESFTPSERVER is not set
 
@@ -3303,8 +3346,8 @@ BR2_PACKAGE_IFUPDOWN_SCRIPTS=y
 BR2_PACKAGE_IPROUTE2=y
 BR2_PACKAGE_IPSET=y
 BR2_PACKAGE_IPTABLES=y
-# BR2_PACKAGE_IPTABLES_BPF_NFSYNPROXY is not set
 BR2_PACKAGE_IPTABLES_NFTABLES=y
+# BR2_PACKAGE_IPTABLES_BPF_NFSYNPROXY is not set
 
 #
 # nftables compat needs a toolchain w/ wchar, dynamic library, headers >= 3.12
@@ -3313,10 +3356,7 @@ BR2_PACKAGE_IPTABLES_NFTABLES=y
 # BR2_PACKAGE_IPUTILS is not set
 # BR2_PACKAGE_IRSSI is not set
 # BR2_PACKAGE_IW is not set
-
-#
-# iwd needs a toolchain w/ threads, dynamic library, wchar, headers >= 4.12
-#
+# BR2_PACKAGE_IWD is not set
 
 #
 # janus-gateway needs a toolchain w/ dynamic library, threads, wchar
@@ -3347,7 +3387,7 @@ BR2_PACKAGE_IPTABLES_NFTABLES=y
 # BR2_PACKAGE_LINKS is not set
 
 #
-# linphone needs a toolchain w/ threads, C++, dynamic library, wchar
+# linphone needs a toolchain w/ threads, C++, dynamic library, wchar, gcc >= 5
 #
 # BR2_PACKAGE_LINUX_ZIGBEE is not set
 # BR2_PACKAGE_LINUXPTP is not set
@@ -3399,7 +3439,7 @@ BR2_PACKAGE_IPTABLES_NFTABLES=y
 # BR2_PACKAGE_NETCAT is not set
 
 #
-# netcat-openbsd needs a glibc toolchain w/ threads, headers >= 3.12
+# netcat-openbsd needs a glibc toolchain w/ dynamic library, threads, headers >= 3.12
 #
 # BR2_PACKAGE_NETPLUG is not set
 # BR2_PACKAGE_NETSNMP is not set
@@ -3439,13 +3479,14 @@ BR2_PACKAGE_IPTABLES_NFTABLES=y
 # BR2_PACKAGE_OPENOBEX is not set
 # BR2_PACKAGE_OPENRESOLV is not set
 # BR2_PACKAGE_OPENSSH is not set
-
-#
-# openswan needs a uClibc or glibc toolchain w/ headers >= 3.4
-#
+# BR2_PACKAGE_OPENSWAN is not set
 # BR2_PACKAGE_OPENVPN is not set
 # BR2_PACKAGE_P910ND is not set
 # BR2_PACKAGE_PARPROUTED is not set
+
+#
+# phidgetwebservice needs a toolchain w/ threads, dynamic library, gcc >= 4.9
+#
 # BR2_PACKAGE_PHYTOOL is not set
 # BR2_PACKAGE_PIMD is not set
 # BR2_PACKAGE_PIXIEWPS is not set
@@ -3529,6 +3570,7 @@ BR2_PACKAGE_SOCAT=y
 #
 # squid needs a toolchain w/ C++, gcc >= 4.8 not affected by bug 64735
 #
+# BR2_PACKAGE_SSDP_RESPONDER is not set
 # BR2_PACKAGE_SSHGUARD is not set
 # BR2_PACKAGE_SSHPASS is not set
 # BR2_PACKAGE_SSLH is not set
@@ -3553,6 +3595,7 @@ BR2_PACKAGE_STRONGSWAN_PKI=y
 # BR2_PACKAGE_STRONGSWAN_SCEP is not set
 BR2_PACKAGE_STRONGSWAN_SCRIPTS=y
 BR2_PACKAGE_STRONGSWAN_VICI=y
+
 # BR2_PACKAGE_STUNNEL is not set
 # BR2_PACKAGE_TCPDUMP is not set
 # BR2_PACKAGE_TCPING is not set
@@ -3648,35 +3691,35 @@ BR2_PACKAGE_STRONGSWAN_VICI=y
 #
 
 #
-# Please note:
+# Please note:                                           
 #
 
 #
-# - Buildroot does *not* generate binary packages,
+# - Buildroot does *not* generate binary packages,       
 #
 
 #
-# - Buildroot does *not* install any package database.
+# - Buildroot does *not* install any package database.   
 #
 
 #
-# *
+# *                                                      
 #
 
 #
-# It is up to you to provide those by yourself if you
+# It is up to you to provide those by yourself if you    
 #
 
 #
-# want to use any of those package managers.
+# want to use any of those package managers.             
 #
 
 #
-# *
+# *                                                      
 #
 
 #
-# See the manual:
+# See the manual:                                        
 #
 
 #
@@ -3776,6 +3819,7 @@ BR2_PACKAGE_URANDOM_SCRIPTS=y
 # BR2_PACKAGE_LOCKFILE_PROGS is not set
 # BR2_PACKAGE_LOGROTATE is not set
 # BR2_PACKAGE_LOGSURFER is not set
+# BR2_PACKAGE_NEOFETCH is not set
 # BR2_PACKAGE_PDMENU is not set
 # BR2_PACKAGE_PINENTRY is not set
 # BR2_PACKAGE_QPRINT is not set
@@ -3785,6 +3829,7 @@ BR2_PACKAGE_URANDOM_SCRIPTS=y
 #
 # BR2_PACKAGE_RTTY is not set
 # BR2_PACKAGE_SCREEN is not set
+# BR2_PACKAGE_SCREENFETCH is not set
 # BR2_PACKAGE_SUDO is not set
 
 #
@@ -3813,6 +3858,7 @@ BR2_PACKAGE_AUDIT_ARCH_SUPPORTS=y
 #
 # audit needs a toolchain w/ threads, dynamic library
 #
+# BR2_PACKAGE_BALENA_ENGINE is not set
 # BR2_PACKAGE_BUBBLEWRAP is not set
 # BR2_PACKAGE_CGROUPFS_MOUNT is not set
 
@@ -3847,7 +3893,7 @@ BR2_PACKAGE_COREUTILS=y
 # BR2_PACKAGE_EARLYOOM is not set
 
 #
-# efibootmgr needs a glibc or uClibc toolchain w/ dynamic library, headers >= 3.12, gcc >= 4.9
+# efibootmgr needs a toolchain w/ dynamic library, headers >= 3.12, gcc >= 4.9
 #
 BR2_PACKAGE_EFIVAR_ARCH_SUPPORTS=y
 
@@ -3860,7 +3906,11 @@ BR2_PACKAGE_EFIVAR_ARCH_SUPPORTS=y
 #
 # BR2_PACKAGE_FTOP is not set
 # BR2_PACKAGE_GETENT is not set
-# BR2_PACKAGE_HTOP is not set
+# BR2_PACKAGE_GKRELLM is not set
+
+#
+# htop needs a toolchain w/ dynamic library
+#
 
 #
 # ibm-sw-tpm2 needs a toolchain w/ threads, dynamic library
@@ -4123,6 +4173,7 @@ BR2_TARGET_GRUB2_ARCH_SUPPORTS=y
 #
 # Host utilities
 #
+# BR2_PACKAGE_HOST_ABOOTIMG is not set
 # BR2_PACKAGE_HOST_AESPIPE is not set
 # BR2_PACKAGE_HOST_ANDROID_TOOLS is not set
 # BR2_PACKAGE_HOST_ASN1C is not set
@@ -4190,8 +4241,8 @@ BR2_PACKAGE_HOST_QEMU_ARCH_SUPPORTS=y
 BR2_PACKAGE_HOST_QEMU_SYSTEM_ARCH_SUPPORTS=y
 BR2_PACKAGE_HOST_QEMU_USER_ARCH_SUPPORTS=y
 # BR2_PACKAGE_HOST_QEMU is not set
+# BR2_PACKAGE_HOST_QORIQ_RCW is not set
 # BR2_PACKAGE_HOST_RAUC is not set
-# BR2_PACKAGE_HOST_RCW is not set
 BR2_PACKAGE_HOST_RUSTC_ARCH_SUPPORTS=y
 BR2_PACKAGE_HOST_RUSTC_ARCH="x86_64"
 # BR2_PACKAGE_HOST_RUSTC is not set
@@ -4212,6 +4263,27 @@ BR2_PACKAGE_PROVIDES_HOST_RUSTC="host-rust-bin"
 #
 # Legacy config options
 #
+
+#
+# Legacy options removed in 2021.02
+#
+# BR2_PACKAGE_SCONESERVER_HTTP_SCONESITE_IMAGE is not set
+# BR2_PACKAGE_XSERVER_XORG_SERVER_KDRIVE_EVDEV is not set
+# BR2_PACKAGE_XSERVER_XORG_SERVER_KDRIVE_KBD is not set
+# BR2_PACKAGE_XSERVER_XORG_SERVER_KDRIVE_MOUSE is not set
+# BR2_PACKAGE_MPD_AUDIOFILE is not set
+# BR2_PACKAGE_AUDIOFILE is not set
+# BR2_BINUTILS_VERSION_2_33_X is not set
+# BR2_PACKAGE_LIBUPNP18 is not set
+# BR2_PACKAGE_BOA is not set
+# BR2_PACKAGE_LINUX_FIRMWARE_IMX_SDMA is not set
+# BR2_GDB_VERSION_8_2 is not set
+# BR2_PACKAGE_HOST_RCW is not set
+# BR2_KERNEL_HEADERS_5_9 is not set
+# BR2_KERNEL_HEADERS_5_8 is not set
+# BR2_powerpc_601 is not set
+# BR2_PACKAGE_TI_SGX_LIBGBM is not set
+# BR2_PACKAGE_IPSEC_TOOLS is not set
 
 #
 # Legacy options removed in 2020.11
@@ -4763,4 +4835,3 @@ BR2_TARGET_UBOOT_CUSTOM_PATCH_DIR=""
 # BR2_BINUTILS_VERSION_2_22 is not set
 # BR2_PACKAGE_GPU_VIV_BIN_MX6Q is not set
 # BR2_TARGET_UBOOT_NETWORK is not set
-
