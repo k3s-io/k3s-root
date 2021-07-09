@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -eux
 
 mkdir -p /source/artifacts/${BUILDARCH}/bin /source/artifacts/${BUILDARCH}/xtables-bin /source/artifacts/${BUILDARCH}/etc /source/dist
 
@@ -68,3 +68,11 @@ cp -rp /source/artifacts/${BUILDARCH}/xtables-bin/* /source/artifacts/${BUILDARC
 tar cf - -C /source/artifacts/${BUILDARCH} ./bin ./etc > /source/dist/k3s-root-${BUILDARCH}.tar
 tar cf - -C /source/artifacts/${BUILDARCH} --transform s/xtables-bin/bin/ ./xtables-bin > /source/dist/k3s-root-xtables-${BUILDARCH}.tar
 popd
+
+apt -y install sudo
+
+echo "TESTING iptables-nft"
+sudo /source/artifacts/${BUILDARCH}/xtables-bin/xtables-nft-multi iptables-nft -A POSTROUTING -s 10.244.0.0/16 ! -d 224.0.0.0/4 -j MASQUERADE --help | grep random
+echo
+echo "TESTING ip6tables-nft"
+sudo /source/artifacts/${BUILDARCH}/xtables-bin/xtables-nft-multi ip6tables-nft -A POSTROUTING -s 10.244.0.0/16 ! -d 224.0.0.0/4 -j MASQUERADE --help | grep random
