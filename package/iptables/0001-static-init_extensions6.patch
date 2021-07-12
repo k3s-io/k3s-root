@@ -1,0 +1,56 @@
+diff -u iptables-1.8.6.orig/iptables/xtables-monitor.c iptables-1.8.6/iptables/xtables-monitor.c
+--- iptables-1.8.6.orig/iptables/xtables-monitor.c	2020-10-31 17:27:07.000000000 +0000
++++ iptables-1.8.6/iptables/xtables-monitor.c	2021-07-10 01:07:42.848869815 +0000
+@@ -615,6 +615,7 @@
+ #if defined(ALL_INCLUSIVE) || defined(NO_SHARED_LIBS)
+ 	init_extensions();
+ 	init_extensions4();
++	init_extensions6();
+ #endif
+ 
+ 	if (nft_init(&h, AF_INET, xtables_ipv4)) {
+diff -u iptables-1.8.6.orig/iptables/xtables-restore.c iptables-1.8.6/iptables/xtables-restore.c
+--- iptables-1.8.6.orig/iptables/xtables-restore.c	2020-10-31 17:27:07.000000000 +0000
++++ iptables-1.8.6/iptables/xtables-restore.c	2021-07-10 01:08:04.544869005 +0000
+@@ -364,6 +364,7 @@
+ #if defined(ALL_INCLUSIVE) || defined(NO_SHARED_LIBS)
+ 		init_extensions();
+ 		init_extensions4();
++		init_extensions6();
+ #endif
+ 		break;
+ 	case NFPROTO_ARP:
+diff -u iptables-1.8.6.orig/iptables/xtables-save.c iptables-1.8.6/iptables/xtables-save.c
+--- iptables-1.8.6.orig/iptables/xtables-save.c	2020-10-31 17:27:07.000000000 +0000
++++ iptables-1.8.6/iptables/xtables-save.c	2021-07-10 01:08:34.680867879 +0000
+@@ -207,6 +207,7 @@
+ #if defined(ALL_INCLUSIVE) || defined(NO_SHARED_LIBS)
+ 		init_extensions();
+ 		init_extensions4();
++		init_extensions6();
+ #endif
+ 		tables = xtables_ipv4;
+ 		d.commit = true;
+diff -u iptables-1.8.6.orig/iptables/xtables-standalone.c iptables-1.8.6/iptables/xtables-standalone.c
+--- iptables-1.8.6.orig/iptables/xtables-standalone.c	2020-10-31 17:27:07.000000000 +0000
++++ iptables-1.8.6/iptables/xtables-standalone.c	2021-07-10 01:08:57.792867016 +0000
+@@ -57,6 +57,7 @@
+ #if defined(ALL_INCLUSIVE) || defined(NO_SHARED_LIBS)
+ 	init_extensions();
+ 	init_extensions4();
++	init_extensions6();
+ #endif
+ 
+ 	if (nft_init(&h, family, xtables_ipv4) < 0) {
+diff -u iptables-1.8.6.orig/iptables/xtables-translate.c iptables-1.8.6/iptables/xtables-translate.c
+--- iptables-1.8.6.orig/iptables/xtables-translate.c	2020-10-31 17:27:07.000000000 +0000
++++ iptables-1.8.6/iptables/xtables-translate.c	2021-07-10 01:09:59.740864703 +0000
+@@ -469,6 +469,7 @@
+ #if defined(ALL_INCLUSIVE) || defined(NO_SHARED_LIBS)
+ 	init_extensions();
+ 	init_extensions4();
++	init_extensions6();
+ #endif
+ 		tables = xtables_ipv4;
+ 		break;
+
