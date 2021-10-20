@@ -7,64 +7,8 @@ BR2_HOST_GCC_AT_LEAST_4_9=y
 BR2_HOST_GCC_AT_LEAST_5=y
 BR2_HOST_GCC_AT_LEAST_6=y
 BR2_HOST_GCC_AT_LEAST_7=y
-
-#
-# Target options
-#
-BR2_ARCH_IS_64=y
-BR2_ARCH_HAS_MMU_MANDATORY=y
-# BR2_arcle is not set
-# BR2_arceb is not set
-# BR2_arm is not set
-# BR2_armeb is not set
-# BR2_aarch64 is not set
-# BR2_aarch64_be is not set
-# BR2_csky is not set
-# BR2_i386 is not set
-# BR2_m68k is not set
-# BR2_microblazeel is not set
-# BR2_microblazebe is not set
-# BR2_mips is not set
-# BR2_mipsel is not set
-# BR2_mips64 is not set
-# BR2_mips64el is not set
-# BR2_nds32 is not set
-# BR2_nios2 is not set
-# BR2_or1k is not set
-# BR2_powerpc is not set
-# BR2_powerpc64 is not set
-# BR2_powerpc64le is not set
-# BR2_riscv is not set
-# BR2_s390x is not set
-# BR2_sh is not set
-# BR2_sparc is not set
-# BR2_sparc64 is not set
-BR2_x86_64=y
-# BR2_xtensa is not set
-BR2_ARCH_HAS_TOOLCHAIN_BUILDROOT=y
-BR2_ARCH="x86_64"
-BR2_ENDIAN="LITTLE"
-BR2_GCC_TARGET_ARCH="nocona"
-BR2_BINFMT_SUPPORTS_SHARED=y
-BR2_READELF_ARCH_NAME="Advanced Micro Devices X86-64"
-BR2_BINFMT_ELF=y
-BR2_X86_CPU_HAS_MMX=y
-BR2_X86_CPU_HAS_SSE=y
-BR2_X86_CPU_HAS_SSE2=y
-BR2_X86_CPU_HAS_SSE3=y
-BR2_x86_nocona=y
-# BR2_x86_core2 is not set
-# BR2_x86_corei7 is not set
-# BR2_x86_westmere is not set
-# BR2_x86_corei7_avx is not set
-# BR2_x86_core_avx2 is not set
-# BR2_x86_atom is not set
-# BR2_x86_silvermont is not set
-# BR2_x86_opteron is not set
-# BR2_x86_opteron_sse3 is not set
-# BR2_x86_barcelona is not set
-# BR2_x86_jaguar is not set
-# BR2_x86_steamroller is not set
+BR2_HOST_GCC_AT_LEAST_8=y
+BR2_HOST_GCC_AT_LEAST_9=y
 
 #
 # Build options
@@ -702,6 +646,7 @@ BR2_PACKAGE_VALGRIND_ARCH_SUPPORTS=y
 #
 # Development tools
 #
+# BR2_PACKAGE_BATS_CORE is not set
 # BR2_PACKAGE_BINUTILS is not set
 # BR2_PACKAGE_BITWISE is not set
 # BR2_PACKAGE_BSDIFF is not set
@@ -3805,6 +3750,7 @@ BR2_PACKAGE_URANDOM_SCRIPTS=y
 # Utilities
 #
 # BR2_PACKAGE_AT is not set
+# BR2_PACKAGE_BASH_COMPLETION is not set
 # BR2_PACKAGE_CCRYPT is not set
 # BR2_PACKAGE_DIALOG is not set
 # BR2_PACKAGE_DTACH is not set
@@ -3956,7 +3902,6 @@ BR2_PACKAGE_MAKEDUMPFILE_ARCH_SUPPORTS=y
 #
 # netifrc needs openrc as init system
 #
-BR2_PACKAGE_NUMACTL_ARCH_SUPPORTS=y
 # BR2_PACKAGE_NUMACTL is not set
 
 #

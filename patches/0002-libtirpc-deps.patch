@@ -1,0 +1,13 @@
+diff --git buildroot.orig/package/libtirpc/libtirpc.mk buildroot/package/libtirpc/libtirpc.mk
+index 2678c14..37577dd 100644
+--- buildroot.orig/package/libtirpc/libtirpc.mk
++++ buildroot/package/libtirpc/libtirpc.mk
+@@ -11,7 +11,7 @@ LIBTIRPC_LICENSE = BSD-3-Clause
+ LIBTIRPC_LICENSE_FILES = COPYING
+ LIBTIRPC_CPE_ID_VENDOR = libtirpc_project
+ 
+-LIBTIRPC_DEPENDENCIES = host-nfs-utils
++LIBTIRPC_DEPENDENCIES = host-libtirpc
+ LIBTIRPC_INSTALL_STAGING = YES
+ LIBTIRPC_AUTORECONF = YES
+ 

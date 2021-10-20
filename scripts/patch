@@ -1,10 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -ex
+set -eux
+
 shopt -s nullglob
 
 pushd /usr/src/buildroot
 
 for PATCH in /source/patches/*.patch; do
-  patch --verbose -t -p1 -i $PATCH
+  patch -t -p1 -i "${PATCH}"
 done

@@ -1,7 +1,8 @@
-#!/bin/sh
-set -ex
+#!/usr/bin/env bash
 
-cd "$(dirname $0)"
+set -eux
+
+cd "$(dirname "$0")"
 
 echo "Buildarch is $BUILDARCH"
 

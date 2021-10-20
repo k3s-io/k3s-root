@@ -1,7 +1,8 @@
 ARCH ?= amd64
-ALL_ARCH = amd64 arm64 arm ppc64le
+ALL_ARCH = amd64 arm64 arm ppc64le s390x
 
 export BUILDARCH = $(ARCH)
+export VERBOSE ?= 1
 
 TARGETS := $(shell ls scripts)
 
