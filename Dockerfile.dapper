@@ -12,18 +12,20 @@ RUN set -eux \
     build-base \
     ca-certificates \
     ccache \
+    cmake \
     coreutils \
     cpio \
     curl \
     findutils \
     git \
     libtool \
-    linux-headers \
     lz4 \
     mercurial \
     musl-dev \
+    musl-libintl \
     ncurses-dev \
-    python2 \
+    ninja \
+    python3 \
     rpcgen \
     rsync \
     sed \
@@ -36,7 +38,7 @@ RUN set -eux \
 
 ENV DAPPER_SOURCE /source
 ENV DAPPER_OUTPUT ./artifacts ./dist
-ENV DAPPER_ENV BUILDARCH VERBOSE
+ENV DAPPER_ENV BUILDARCH BUILDROOT_VERSION VERBOSE
 ENV DAPPER_RUN_ARGS -v k3s-root-cache:/var/cache/dl
 ENV BR2_DL_DIR /var/cache/dl
 # Required to build as root, even in Docker

@@ -1,0 +1,10 @@
+--- buildroot.orig/package/Config.in
++++ buildroot/package/Config.in
+@@ -1827,6 +1827,7 @@
+ 	source "package/restclient-cpp/Config.in"
+ 	source "package/rtmpdump/Config.in"
+ 	source "package/slirp/Config.in"
++	source "package/slirp4netns/Config.in"
+ 	source "package/snmppp/Config.in"
+ 	source "package/sofia-sip/Config.in"
+ 	source "package/sysrepo/Config.in"

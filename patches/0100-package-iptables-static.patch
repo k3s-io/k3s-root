@@ -1,4 +1,3 @@
-diff -ru buildroot.orig/package/iptables/Config.in buildroot/package/iptables/Config.in
 --- buildroot.orig/package/iptables/Config.in	2020-12-27 14:23:34.000000000 +0000
 +++ buildroot/package/iptables/Config.in	2021-02-17 23:46:17.941771567 +0000
 @@ -16,7 +16,6 @@

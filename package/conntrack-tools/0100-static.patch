@@ -1,5 +1,5 @@
---- conntrack-tools-1.4.5-old/src/read_config_yy.y	2018-05-01 09:34:20.409429996 +0000
-+++ conntrack-tools-1.4.5/src/read_config_yy.y	2019-01-05 02:15:40.926362996 +0000
+--- a/src/read_config_yy.y	2018-05-01 09:34:20.409429996 +0000
++++ b/src/read_config_yy.y	2019-01-05 02:15:40.926362996 +0000
 @@ -31,7 +31,6 @@
  #include "helper.h"
  #include "stack.h"

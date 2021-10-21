@@ -2,45 +2,20 @@
 
 set -eux -o pipefail
 
-mkdir -p "/source/artifacts/${BUILDARCH}/bin" "/source/artifacts/${BUILDARCH}/xtables-bin" "/source/artifacts/${BUILDARCH}/etc" /source/dist
+mkdir -p \
+    /source/dist \
+    /source/artifacts/"${BUILDARCH}"/{bin,etc,xtables-bin}
 
 pushd /usr/src
 
 # copy binaries
-cp -d buildroot/output/target/usr/sbin/*tables* "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/sbin/conntrack "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/sbin/ethtool "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/sbin/ipset "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/bin/find "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/bin/nsenter "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/bin/pigz "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/bin/socat "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/bin/coreutils "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/sbin/ip "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/sbin/blkid "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/sbin/losetup "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/bin/busybox "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/sbin/swanctl "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/libexec/ipsec/charon "/source/artifacts/${BUILDARCH}/bin/"
-
-# download pre-built binaries
-SLIRP4NETNS_VERSION="v1.1.11"
-FUSE_OVERLAYFS_VERSION="v1.5.0"
-uname_m="${BUILDARCH}"
-case "${BUILDARCH}" in
-    "amd64")
-        uname_m="x86_64" ;;
-    "arm64")
-        uname_m="aarch64" ;;
-    "arm")
-        uname_m="armv7l" ;;
-esac
-curl -o "/source/artifacts/${BUILDARCH}/bin/"slirp4netns -sSL https://github.com/rootless-containers/slirp4netns/releases/download/${SLIRP4NETNS_VERSION}/slirp4netns-${uname_m}
-chmod +x "/source/artifacts/${BUILDARCH}/bin/"slirp4netns
-strip -d "/source/artifacts/${BUILDARCH}/bin/"slirp4netns
-curl -o "/source/artifacts/${BUILDARCH}/bin/"fuse-overlayfs -sSL https://github.com/containers/fuse-overlayfs/releases/download/${FUSE_OVERLAYFS_VERSION}/fuse-overlayfs-${uname_m}
-chmod +x "/source/artifacts/${BUILDARCH}/bin/"fuse-overlayfs
-strip -d "/source/artifacts/${BUILDARCH}/bin/"fuse-overlayfs
+cp -d buildroot/output/target/usr/sbin/*tables*                         "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/sbin/{conntrack,ethtool,ipset,swanctl}   "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/bin/{find,nsenter,pigz,socat,coreutils}  "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/bin/{slirp4netns,fuse-overlayfs}         "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/sbin/{blkid,ip,losetup}                      "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/bin/busybox                                  "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/libexec/ipsec/charon                     "/source/artifacts/${BUILDARCH}/bin/"
 
 # save etc
 cp -rp buildroot/output/target/var/lib/rancher/k3s/agent/* "/source/artifacts/${BUILDARCH}/etc/"

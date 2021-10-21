@@ -1,0 +1,12 @@
+--- buildroot.orig/package/linux-headers/linux-headers.mk
++++ buildroot/package/linux-headers/linux-headers.mk
+@@ -159,4 +159,9 @@
+ LINUX_HEADERS_POST_INSTALL_STAGING_HOOKS += LINUX_HEADERS_CHECK_VERSION
+ endif
+ 
++define LINUX_HEADERS_OVERLAY
++	rsync -am --relative $(STAGING_DIR)/./usr/include /
++endef
++LINUX_HEADERS_POST_INSTALL_STAGING_HOOKS += LINUX_HEADERS_OVERLAY
++
+ $(eval $(generic-package))
