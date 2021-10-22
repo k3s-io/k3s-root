@@ -1,0 +1,43 @@
+#
+# Target options
+#
+BR2_ARCH_IS_64=y
+BR2_ARCH_HAS_MMU_MANDATORY=y
+# BR2_arcle is not set
+# BR2_arceb is not set
+# BR2_arm is not set
+# BR2_armeb is not set
+# BR2_aarch64 is not set
+# BR2_aarch64_be is not set
+# BR2_csky is not set
+# BR2_i386 is not set
+# BR2_m68k is not set
+# BR2_microblazeel is not set
+# BR2_microblazebe is not set
+# BR2_mips is not set
+# BR2_mipsel is not set
+# BR2_mips64 is not set
+# BR2_mips64el is not set
+# BR2_nds32 is not set
+# BR2_nios2 is not set
+# BR2_or1k is not set
+# BR2_powerpc is not set
+# BR2_powerpc64 is not set
+# BR2_powerpc64le is not set
+# BR2_riscv is not set
+BR2_s390x=y
+# BR2_sh is not set
+# BR2_sparc is not set
+# BR2_sparc64 is not set
+# BR2_x86_64 is not set
+# BR2_xtensa is not set
+BR2_ARCH_HAS_TOOLCHAIN_BUILDROOT=y
+BR2_ARCH="s390x"
+BR2_ENDIAN="BIG"
+BR2_GCC_TARGET_ARCH="arch11"
+BR2_BINFMT_SUPPORTS_SHARED=y
+BR2_READELF_ARCH_NAME="IBM S/390"
+BR2_BINFMT_ELF=y
+BR2_s390x_z13=y
+# BR2_s390x_z14 is not set
+# BR2_s390x_z15 is not set

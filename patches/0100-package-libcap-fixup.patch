@@ -1,0 +1,25 @@
+--- buildroot.orig/package/libcap/libcap.mk
++++ buildroot/package/libcap/libcap.mk
+@@ -11,10 +11,10 @@
+ LIBCAP_LICENSE_FILES = License
+ LIBCAP_CPE_ID_VENDOR = libcap_project
+ 
+-LIBCAP_DEPENDENCIES = host-libcap host-gperf
++LIBCAP_DEPENDENCIES = host-libcap host-gperf linux-headers
+ LIBCAP_INSTALL_STAGING = YES
+ 
+-HOST_LIBCAP_DEPENDENCIES = host-gperf
++HOST_LIBCAP_DEPENDENCIES = host-gperf linux-headers
+ 
+ LIBCAP_MAKE_FLAGS = \
+ 	CROSS_COMPILE="$(TARGET_CROSS)" \
+@@ -60,7 +60,8 @@
+ 	RAISE_SETFCAP=no
+ 
+ define HOST_LIBCAP_BUILD_CMDS
+-	$(HOST_MAKE_ENV) $(HOST_CONFIGURE_OPTS) $(MAKE) -C $(@D) \
++	$(HOST_MAKE_ENV) IPATH="-I$(wildcard $(CONFIG_DIR)/output/per-package/linux-headers/host/*/sysroot/usr/include)" \
++	$(HOST_CONFIGURE_OPTS) $(MAKE) -C $(@D) \
+ 		$(HOST_LIBCAP_MAKE_FLAGS)
+ endef
+ 

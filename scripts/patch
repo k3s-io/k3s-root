@@ -1,10 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -ex
+set -eux
+
 shopt -s nullglob
 
-pushd /usr/src/buildroot
+rsync -amv /source/package/ /usr/src/buildroot/package/
 
+pushd /usr/src/buildroot
 for PATCH in /source/patches/*.patch; do
-  patch --verbose -t -p1 -i $PATCH
+  patch -t -p1 -i "${PATCH}"
 done
+popd
+
+cat /source/buildroot/{"${BUILDARCH}config",config} > /usr/src/buildroot/.config

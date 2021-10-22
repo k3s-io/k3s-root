@@ -1,9 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -ex
+set -eux -o pipefail
 
-export BUILDROOT_VERSION=2021.02.3
+: "${BUILDROOT_VERSION:=2021.02.3}"
+export BUILDROOT_VERSION
 
 mkdir -p /usr/src/buildroot
 
-curl -fL https://buildroot.org/downloads/buildroot-${BUILDROOT_VERSION}.tar.bz2 | tar xvjf - -C /usr/src/buildroot --strip-components=1
+curl -fL https://github.com/buildroot/buildroot/archive/refs/tags/${BUILDROOT_VERSION}.tar.gz | tar xz -C /usr/src/buildroot --strip-components=1

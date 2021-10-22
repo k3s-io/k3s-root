@@ -2,3 +2,11 @@
 /artifacts
 /build
 /.dapper
+.bashrc
+.bash_history
+.bash_profile
+.less*
+.subversion
+.vim/
+.viminfo
+.wget*

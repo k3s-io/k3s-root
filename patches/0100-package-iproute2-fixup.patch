@@ -1,0 +1,20 @@
+--- buildroot.orig/package/iproute2/iproute2.mk
++++ buildroot/package/iproute2/iproute2.mk
+@@ -38,6 +38,8 @@
+ IPROUTE2_DEPENDENCIES += berkeleydb
+ endif
+ 
++export LINUX_HEADERS="$(wildcard $(CONFIG_DIR)/output/per-package/linux-headers/host/*/sysroot/usr/include)"
++
+ define IPROUTE2_CONFIGURE_CMDS
+ 	cd $(@D) && $(TARGET_CONFIGURE_OPTS) ./configure
+ 	$(IPROUTE2_DISABLE_IPTABLES)
+@@ -46,7 +48,7 @@
+ define IPROUTE2_BUILD_CMDS
+ 	$(TARGET_MAKE_ENV) LDFLAGS="$(TARGET_LDFLAGS)" \
+ 		CFLAGS="$(TARGET_CFLAGS) -DXT_LIB_DIR=\\\"/usr/lib/xtables\\\"" \
+-		CBUILD_CFLAGS="$(HOST_CFLAGS)" $(MAKE) V=1 LIBDB_LIBS=-lpthread \
++		CBUILD_CFLAGS="$(HOST_CFLAGS) -I$(LINUX_HEADERS)" $(MAKE) V=1 LIBDB_LIBS=-lpthread \
+ 		DBM_INCLUDE="$(STAGING_DIR)/usr/include" \
+ 		SHARED_LIBS="$(if $(BR2_STATIC_LIBS),n,y)" -C $(@D)
+ endef
