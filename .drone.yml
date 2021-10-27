@@ -195,9 +195,12 @@ platform:
   os: linux
   arch: amd64
 
+node:
+  arch: s390x
+
 steps:
 - name: build-s390x
-  image: rancher/dapper:v0.5.0
+  image: rancher/dapper:v0.5.7
   commands:
   - dapper ci
   environment:
