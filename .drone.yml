@@ -211,7 +211,7 @@ steps:
     path: /var/run/docker.sock
 
 - name: github-s390x-binary-release
-  image: plugins/github-release
+  image: dweomer/drone-github-release:s390x
   settings:
     api_key:
       from_secret: github_token
