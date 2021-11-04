@@ -98,3 +98,8 @@ BR2_cortex_a53=y
 # BR2_ARM_FPU_VFPV4 is not set
 # BR2_ARM_FPU_VFPV4D16 is not set
 BR2_ARM_FPU_FP_ARMV8=y
+
+#
+# ebtables
+#
+BR2_PACKAGE_EBTABLES=y

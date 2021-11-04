@@ -54,3 +54,8 @@ BR2_x86_nocona=y
 # BR2_x86_barcelona is not set
 # BR2_x86_jaguar is not set
 # BR2_x86_steamroller is not set
+
+#
+# ebtables
+#
+BR2_PACKAGE_EBTABLES=y

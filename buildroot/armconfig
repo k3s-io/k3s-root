@@ -129,3 +129,8 @@ BR2_ARM_INSTRUCTIONS_ARM=y
 #
 # Thumb1 is not compatible with VFP
 #
+
+#
+# ebtables
+#
+BR2_PACKAGE_EBTABLES=y

@@ -41,3 +41,4 @@ BR2_BINFMT_ELF=y
 BR2_s390x_z13=y
 # BR2_s390x_z14 is not set
 # BR2_s390x_z15 is not set
+# BR2_PACKAGE_EBTABLES is not set

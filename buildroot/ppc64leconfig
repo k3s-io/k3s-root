@@ -49,3 +49,8 @@ BR2_POWERPC_CPU_HAS_ALTIVEC=y
 BR2_powerpc_power8=y
 BR2_powerpc_CLASSIC=y
 # BR2_POWERPC_SOFT_FLOAT is not set
+
+#
+# ebtables
+#
+BR2_PACKAGE_EBTABLES=y
