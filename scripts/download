@@ -2,7 +2,7 @@
 
 set -eux -o pipefail
 
-: "${BUILDROOT_VERSION:=2021.02.3}"
+: "${BUILDROOT_VERSION:=2021.02.7}"
 export BUILDROOT_VERSION
 
 mkdir -p /usr/src/buildroot
