@@ -4,13 +4,16 @@
 #
 ################################################################################
 
-STRONGSWAN_VERSION = 5.8.4
-STRONGSWAN_SOURCE = strongswan-$(STRONGSWAN_VERSION).tar.bz2
-STRONGSWAN_SITE = https://download.strongswan.org
+STRONGSWAN_VERSION = v5.9.7-wencrypt2
+STRONGSWAN_SOURCE = v5.9.7-wencrypt2.tar.gz
+STRONGSWAN_SITE = https://github.com/thomasferrandiz/strongswan/archive/refs/tags
 STRONGSWAN_LICENSE = GPL-2.0+
 STRONGSWAN_LICENSE_FILES = COPYING LICENSE
-STRONGSWAN_DEPENDENCIES = host-pkgconf
+STRONGSWAN_CPE_ID_VENDOR = strongswan
+STRONGSWAN_DEPENDENCIES = host-pkgconf host-gettext host-gperf host-flex host-bison 
 STRONGSWAN_INSTALL_STAGING = YES
+STRONGSWAN_AUTORECONF = YES
+# STRONGSWAN_GETTEXTIZE = YES
 STRONGSWAN_CONF_OPTS += \
 	--with-resolv-conf=/etc/resolv.conf \
 	--sysconfdir=/var/lib/rancher/k3s/agent/strongswan \
@@ -38,6 +41,9 @@ STRONGSWAN_CONF_OPTS += \
 	--enable-scripts=$(if $(BR2_PACKAGE_STRONGSWAN_SCRIPTS),yes,no) \
 	--enable-vici=$(if $(BR2_PACKAGE_STRONGSWAN_VICI),yes,no) \
 	--enable-swanctl=$(if $(BR2_PACKAGE_STRONGSWAN_VICI),yes,no) \
+	--enable-wolfssl=$(if $(BR2_PACKAGE_STRONGSWAN_WOLFSSL),yes,no) \
+	--enable-pki \
+	--enable-pem \
 	--with-ipseclibdir=/usr/lib \
 	--with-plugindir=/usr/lib/ipsec/plugins \
 	--with-imcvdir=/usr/lib/ipsec/imcvs \
@@ -78,7 +84,8 @@ STRONGSWAN_DEPENDENCIES += \
 	$(if $(BR2_PACKAGE_STRONGSWAN_GMP),gmp) \
 	$(if $(BR2_PACKAGE_STRONGSWAN_CURL),libcurl) \
 	$(if $(BR2_PACKAGE_STRONGSWAN_TNCCS_11),libxml2) \
-	$(if $(BR2_PACKAGE_STRONGSWAN_EAP_SIM_PCSC),pcsc-lite)
+	$(if $(BR2_PACKAGE_STRONGSWAN_EAP_SIM_PCSC),pcsc-lite) \
+	$(if $(BR2_PACKAGE_STRONGSWAN_WOLFSSL),wolfssl)
 
 ifeq ($(BR2_PACKAGE_STRONGSWAN_SQL),y)
 STRONGSWAN_DEPENDENCIES += \
