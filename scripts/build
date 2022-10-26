@@ -8,7 +8,7 @@ V="${VERBOSE:=0}"
 
 unset VERBOSE
 
-make -s V="${V}" oldconfig
+make -s V="${V}" olddefconfig
 make -s V="${V}"
 
 popd

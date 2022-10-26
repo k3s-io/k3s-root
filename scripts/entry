@@ -5,7 +5,7 @@ shopt -qs extglob
 
 # VERBOSE truthiness is kinda ... verbose
 : "${VERBOSE:=1}"
-VERBOSE="${VERBOSE@L}"
+VERBOSE="${VERBOSE,,}"
 VERBOSE="${VERBOSE:0:4}"
 VERBOSE="${VERBOSE/@(true|yes|[1-9])/1}"
 VERBOSE="${VERBOSE}${#VERBOSE}"

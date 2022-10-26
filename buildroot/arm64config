@@ -2,15 +2,13 @@
 # Target options
 #
 BR2_ARCH_IS_64=y
-BR2_ARCH_HAS_MMU_MANDATORY=y
-BR2_ARCH_HAS_MMU_OPTIONAL=y
+BR2_USE_MMU=y
 # BR2_arcle is not set
 # BR2_arceb is not set
 # BR2_arm is not set
 # BR2_armeb is not set
 BR2_aarch64=y
 # BR2_aarch64_be is not set
-# BR2_csky is not set
 # BR2_i386 is not set
 # BR2_m68k is not set
 # BR2_microblazeel is not set
@@ -19,13 +17,13 @@ BR2_aarch64=y
 # BR2_mipsel is not set
 # BR2_mips64 is not set
 # BR2_mips64el is not set
-# BR2_nds32 is not set
 # BR2_nios2 is not set
 # BR2_or1k is not set
 # BR2_powerpc is not set
 # BR2_powerpc64 is not set
 # BR2_powerpc64le is not set
 # BR2_riscv is not set
+# BR2_s390x is not set
 # BR2_sh is not set
 # BR2_sparc is not set
 # BR2_sparc64 is not set
@@ -33,6 +31,7 @@ BR2_aarch64=y
 # BR2_xtensa is not set
 BR2_ARCH_HAS_TOOLCHAIN_BUILDROOT=y
 BR2_ARCH="aarch64"
+BR2_NORMALIZED_ARCH="arm64"
 BR2_ENDIAN="LITTLE"
 BR2_GCC_TARGET_ABI="lp64"
 BR2_GCC_TARGET_CPU="cortex-a53"
@@ -98,3 +97,6 @@ BR2_cortex_a53=y
 # BR2_ARM_FPU_VFPV4 is not set
 # BR2_ARM_FPU_VFPV4D16 is not set
 BR2_ARM_FPU_FP_ARMV8=y
+BR2_ARM64_PAGE_SIZE_4K=y
+# BR2_ARM64_PAGE_SIZE_64K is not set
+BR2_ARM64_PAGE_SIZE="4K"

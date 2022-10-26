@@ -1,11 +1,13 @@
---- buildroot.orig/package/libcap/libcap.mk
-+++ buildroot/package/libcap/libcap.mk
-@@ -11,10 +11,10 @@
+diff --git a/package/libcap/libcap.mk b/package/libcap/libcap.mk
+index 91e02638e2..62de6e9b77 100644
+--- a/package/libcap/libcap.mk
++++ b/package/libcap/libcap.mk
+@@ -11,10 +11,10 @@ LIBCAP_LICENSE = GPL-2.0 or BSD-3-Clause
  LIBCAP_LICENSE_FILES = License
  LIBCAP_CPE_ID_VENDOR = libcap_project
  
--LIBCAP_DEPENDENCIES = host-libcap host-gperf
-+LIBCAP_DEPENDENCIES = host-libcap host-gperf linux-headers
+-LIBCAP_DEPENDENCIES = host-gperf
++LIBCAP_DEPENDENCIES = host-gperf linux-headers
  LIBCAP_INSTALL_STAGING = YES
  
 -HOST_LIBCAP_DEPENDENCIES = host-gperf
@@ -13,7 +15,7 @@
  
  LIBCAP_MAKE_FLAGS = \
  	CROSS_COMPILE="$(TARGET_CROSS)" \
-@@ -60,7 +60,8 @@
+@@ -60,7 +60,8 @@ HOST_LIBCAP_MAKE_FLAGS = \
  	RAISE_SETFCAP=no
  
  define HOST_LIBCAP_BUILD_CMDS

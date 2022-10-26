@@ -1,1 +1,3 @@
-sha256 279dfe58a61b9d769f620b6c0552edd93daba75d7761f7c3742ec4d26aaa2962  slirp4netns-1.1.12.tar.gz
+# Locally computed:
+sha256  b584edde686d3cfbac210cbdb93c4b0ba5d8cc0a6a4d92b9dfc3c5baec99c727  slirp4netns-1.2.0.tar.gz
+sha256  58db3cfabf8ec806bc060e54ab5466a31de4a3ae80fe4a8aa02fb6b1c053c93f  COPYING

@@ -1,0 +1,13 @@
+diff --git a/package/libseccomp/Config.in b/package/libseccomp/Config.in
+index 7de91c07c5..1291842c87 100644
+--- a/package/libseccomp/Config.in
++++ b/package/libseccomp/Config.in
+@@ -4,7 +4,7 @@ config BR2_PACKAGE_LIBSECCOMP_ARCH_SUPPORTS
+ 	default y if BR2_arm || BR2_armeb
+ 	default y if BR2_mips || BR2_mipsel || BR2_mips64 || BR2_mips64el
+ 	default y if BR2_i386 || BR2_x86_64
+-	default y if BR2_powerpc64 || BR2_powerpc
++	default y if BR2_powerpc64le || BR2_powerpc64 || BR2_powerpc
+ 	default y if BR2_RISCV_64
+ 	default y if BR2_s390x
+ 
