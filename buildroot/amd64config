@@ -2,14 +2,13 @@
 # Target options
 #
 BR2_ARCH_IS_64=y
-BR2_ARCH_HAS_MMU_MANDATORY=y
+BR2_USE_MMU=y
 # BR2_arcle is not set
 # BR2_arceb is not set
 # BR2_arm is not set
 # BR2_armeb is not set
 # BR2_aarch64 is not set
 # BR2_aarch64_be is not set
-# BR2_csky is not set
 # BR2_i386 is not set
 # BR2_m68k is not set
 # BR2_microblazeel is not set
@@ -18,13 +17,13 @@ BR2_ARCH_HAS_MMU_MANDATORY=y
 # BR2_mipsel is not set
 # BR2_mips64 is not set
 # BR2_mips64el is not set
-# BR2_nds32 is not set
 # BR2_nios2 is not set
 # BR2_or1k is not set
 # BR2_powerpc is not set
 # BR2_powerpc64 is not set
 # BR2_powerpc64le is not set
 # BR2_riscv is not set
+# BR2_s390x is not set
 # BR2_sh is not set
 # BR2_sparc is not set
 # BR2_sparc64 is not set
@@ -32,6 +31,7 @@ BR2_x86_64=y
 # BR2_xtensa is not set
 BR2_ARCH_HAS_TOOLCHAIN_BUILDROOT=y
 BR2_ARCH="x86_64"
+BR2_NORMALIZED_ARCH="x86_64"
 BR2_ENDIAN="LITTLE"
 BR2_GCC_TARGET_ARCH="nocona"
 BR2_BINFMT_SUPPORTS_SHARED=y
@@ -41,14 +41,37 @@ BR2_X86_CPU_HAS_MMX=y
 BR2_X86_CPU_HAS_SSE=y
 BR2_X86_CPU_HAS_SSE2=y
 BR2_X86_CPU_HAS_SSE3=y
+# BR2_x86_x86_64 is not set
+# BR2_x86_x86_64_v2 is not set
+# BR2_x86_x86_64_v3 is not set
+# BR2_x86_x86_64_v4 is not set
 BR2_x86_nocona=y
 # BR2_x86_core2 is not set
 # BR2_x86_corei7 is not set
+# BR2_x86_nehalem is not set
 # BR2_x86_westmere is not set
 # BR2_x86_corei7_avx is not set
+# BR2_x86_sandybridge is not set
 # BR2_x86_core_avx2 is not set
+# BR2_x86_haswell is not set
+# BR2_x86_broadwell is not set
+# BR2_x86_skylake is not set
 # BR2_x86_atom is not set
+# BR2_x86_bonnell is not set
 # BR2_x86_silvermont is not set
+# BR2_x86_goldmont is not set
+# BR2_x86_goldmont_plus is not set
+# BR2_x86_tremont is not set
+# BR2_x86_skylake_avx512 is not set
+# BR2_x86_cannonlake is not set
+# BR2_x86_icelake_client is not set
+# BR2_x86_icelake_server is not set
+# BR2_x86_cascadelake is not set
+# BR2_x86_cooperlake is not set
+# BR2_x86_tigerlake is not set
+# BR2_x86_sapphirerapids is not set
+# BR2_x86_alderlake is not set
+# BR2_x86_rocketlake is not set
 # BR2_x86_opteron is not set
 # BR2_x86_opteron_sse3 is not set
 # BR2_x86_barcelona is not set

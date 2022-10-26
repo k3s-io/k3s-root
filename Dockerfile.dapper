@@ -1,39 +1,25 @@
-FROM alpine:3.14
-RUN set -eux \
- && apk --no-cache add \
-    bash
-SHELL ["/usr/bin/env", "bash", "-c"]
-RUN set -eux \
- && apk --no-cache add \
-    autoconf \
-    automake \
+FROM registry.suse.com/bci/bci-base:15.4
+RUN zypper remove -y container-suseconnect && \
+    zypper install -y -t pattern devel_basis && \
+    zypper install -y \
     bc \
-    binutils \
-    build-base \
-    ca-certificates \
+    bzip2 \
     ccache \
     cmake \
-    coreutils \
-    cpio \
-    curl \
-    findutils \
+    gawk \
+    gcc-c++ \
     git \
-    libtool \
+    gzip \
+    hostname \
     lz4 \
     mercurial \
-    musl-dev \
-    musl-libintl \
-    ncurses-dev \
     ninja \
     python3 \
     rpcgen \
     rsync \
-    sed \
     subversion \
-    tar \
     unzip \
     wget \
-    xz \
     zstd
 
 ENV DAPPER_SOURCE /source

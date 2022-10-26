@@ -1,6 +1,8 @@
---- buildroot.orig/package/nfs-utils/nfs-utils.mk
-+++ buildroot/package/nfs-utils/nfs-utils.mk
-@@ -14,6 +14,9 @@
+diff --git a/package/nfs-utils/nfs-utils.mk b/package/nfs-utils/nfs-utils.mk
+index ed205a26b1..73561dff3a 100644
+--- a/package/nfs-utils/nfs-utils.mk
++++ b/package/nfs-utils/nfs-utils.mk
+@@ -14,6 +14,9 @@ NFS_UTILS_CPE_ID_VENDOR = linux-nfs
  NFS_UTILS_AUTORECONF = YES
  
  NFS_UTILS_CONF_ENV = knfsd_cv_bsd_signals=no
@@ -9,13 +11,4 @@
 +HOST_NFS_UTILS_CONF_ENV += CFLAGS="$(TARGET_CFLAGS) -DGQ"
  
  NFS_UTILS_CONF_OPTS = \
- 	--disable-nfsv4 \
-@@ -35,7 +38,7 @@
- 	--without-tcp-wrappers \
- 	--with-statedir=/run/nfs \
- 	--disable-caps \
--	--disable-tirpc \
-+	--enable-tirpc \
- 	--without-systemd \
- 	--with-rpcgen=internal
- HOST_NFS_UTILS_DEPENDENCIES = host-pkgconf host-libtirpc
+ 	--enable-tirpc \
