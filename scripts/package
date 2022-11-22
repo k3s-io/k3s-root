@@ -9,12 +9,12 @@ mkdir -p \
 pushd /usr/src
 
 # copy binaries
-cp -d buildroot/output/target/usr/sbin/*tables*                         "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/sbin/{conntrack,ethtool,ipset}           "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/bin/{find,nsenter,pigz,socat,coreutils}  "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/bin/{slirp4netns,fuse-overlayfs}         "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/sbin/{blkid,ip,losetup}                      "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/bin/busybox                                  "/source/artifacts/${BUILDARCH}/bin/"
+cp -d buildroot/output/target/usr/sbin/*tables*                  "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/sbin/{conntrack,ethtool,ipset}    "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/bin/{find,nsenter,pigz,coreutils} "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/bin/{slirp4netns,fuse-overlayfs}  "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/sbin/{blkid,ip,losetup}               "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/bin/busybox                           "/source/artifacts/${BUILDARCH}/bin/"
 
 cp -r /source/iptables-detect/*.sh "/source/artifacts/${BUILDARCH}/xtables-bin/"
 
