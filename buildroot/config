@@ -3791,7 +3791,7 @@ BR2_PACKAGE_IPTABLES_NFTABLES=y
 #
 # snort3 needs a toolchain w/ C++, wchar, threads, dynamic library, gcc >= 4.9
 #
-BR2_PACKAGE_SOCAT=y
+# BR2_PACKAGE_SOCAT is not set
 # BR2_PACKAGE_SOCKETCAND is not set
 # BR2_PACKAGE_SOFTETHER is not set
 # BR2_PACKAGE_SPAWN_FCGI is not set
