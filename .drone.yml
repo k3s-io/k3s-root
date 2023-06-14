@@ -257,4 +257,51 @@ volumes:
   host:
     path: /var/run/docker.sock
 
+---
+kind: pipeline
+type: docker
+name: k3s-root-linux-riscv64
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build-riscv64
+  image: rancher/dapper:v0.5.0
+  commands:
+  - dapper ci
+  environment:
+    BUILDARCH: riscv64
+    VERBOSE: "0"
+  volumes:
+  - name: docker
+    path: /var/run/docker.sock
+
+- name: github-riscv64-binary-release
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_token
+    checksum:
+    - sha256
+    checksum_file: CHECKSUMsum-riscv64.txt
+    checksum_flatten: true
+    files:
+    - dist/k3s-*riscv64.tar
+    prerelease: true
+  when:
+    event:
+    - tag
+    instance:
+    - drone-publish.k3s.io
+    ref:
+    - refs/head/master
+    - refs/tags/*
+
+volumes:
+- name: docker
+  host:
+    path: /var/run/docker.sock
+
 ...
