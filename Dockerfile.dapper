@@ -1,11 +1,14 @@
-FROM registry.suse.com/bci/bci-base:15.4
-RUN zypper remove -y container-suseconnect && \
+ARG BASE=registry.suse.com/bci/bci-base:15.4
+FROM ${BASE}
+RUN rm -f /etc/zypp/repos.d/repo-update.repo /etc/zypp/repos.d/repo-openh264.repo; \
+    zypper remove -y container-suseconnect; \
     zypper install -y -t pattern devel_basis && \
     zypper install -y \
     bc \
     bzip2 \
     ccache \
     cmake \
+    cpio \
     gawk \
     gcc-c++ \
     git \

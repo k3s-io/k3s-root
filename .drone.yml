@@ -266,14 +266,19 @@ platform:
   os: linux
   arch: amd64
 
+# Hack needed for riscv64: https://gist.github.com/colstrom/c2f359f72658aaabb44150ac20b16d7c#gistcomment-3858388
+node:
+  arch: riscv64
+
 steps:
 - name: build-riscv64
-  image: rancher/dapper:v0.5.0
+  image: rancher/dapper:v0.6.0
   commands:
   - dapper ci
   environment:
     BUILDARCH: riscv64
     VERBOSE: "0"
+    BASE: registry.opensuse.org/opensuse/factory/riscv/images/opensuse/tumbleweed:latest
   volumes:
   - name: docker
     path: /var/run/docker.sock
