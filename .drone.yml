@@ -20,7 +20,7 @@ steps:
     path: /var/run/docker.sock
 
 - name: fossa
-  image: registry.suse.com/suse/sle15:15.3
+  image: registry.suse.com/suse/sle15:15.6
   failure: ignore
   environment:
     FOSSA_API_KEY:
@@ -145,103 +145,6 @@ steps:
     checksum_flatten: true
     files:
     - dist/k3s-*arm.tar
-    prerelease: true
-  when:
-    event:
-    - tag
-    instance:
-    - drone-publish.k3s.io
-    ref:
-    - refs/head/master
-    - refs/tags/*
-
-volumes:
-- name: docker
-  host:
-    path: /var/run/docker.sock
-
----
-kind: pipeline
-type: docker
-name: k3s-root-linux-ppc64le
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-- name: build-ppc64le
-  image: rancher/dapper:v0.5.0
-  commands:
-  - dapper ci
-  environment:
-    BUILDARCH: ppc64le
-    VERBOSE: "0"
-  volumes:
-  - name: docker
-    path: /var/run/docker.sock
-
-- name: github-ppc64le-binary-release
-  image: plugins/github-release
-  settings:
-    api_key:
-      from_secret: github_token
-    checksum:
-    - sha256
-    checksum_file: CHECKSUMsum-ppc64le.txt
-    checksum_flatten: true
-    files:
-    - dist/k3s-*ppc64le.tar
-    prerelease: true
-  when:
-    event:
-    - tag
-    instance:
-    - drone-publish.k3s.io
-    ref:
-    - refs/head/master
-    - refs/tags/*
-
-volumes:
-- name: docker
-  host:
-    path: /var/run/docker.sock
-
----
-kind: pipeline
-type: docker
-name: k3s-root-linux-s390x
-
-platform:
-  os: linux
-  arch: amd64
-
-node:
-  arch: s390x
-
-steps:
-- name: build-s390x
-  image: rancher/dapper:v0.5.7
-  commands:
-  - dapper ci
-  environment:
-    BUILDARCH: s390x
-    VERBOSE: "0"
-  volumes:
-  - name: docker
-    path: /var/run/docker.sock
-
-- name: github-s390x-binary-release
-  image: dweomer/drone-github-release:s390x
-  settings:
-    api_key:
-      from_secret: github_token
-    checksum:
-    - sha256
-    checksum_file: CHECKSUMsum-s390x.txt
-    checksum_flatten: true
-    files:
-    - dist/k3s-*s390x.tar
     prerelease: true
   when:
     event:

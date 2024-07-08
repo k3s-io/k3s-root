@@ -2,9 +2,9 @@
 
 set -eux -o pipefail
 
-: "${BUILDROOT_VERSION:=2022.08.1}"
+: "${BUILDROOT_VERSION:=2024.02.3}"
 export BUILDROOT_VERSION
 
 mkdir -p /usr/src/buildroot
 
-curl -fL https://github.com/buildroot/buildroot/archive/refs/tags/${BUILDROOT_VERSION}.tar.gz | tar xz -C /usr/src/buildroot --strip-components=1
+curl -sfL https://github.com/buildroot/buildroot/archive/refs/tags/${BUILDROOT_VERSION}.tar.gz | tar xz -C /usr/src/buildroot --strip-components=1
