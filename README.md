@@ -1,11 +1,6 @@
 # k3s-root
 ==========
 
-_NOTE: this repository has been recently (2020-11-18) moved out of the github.com/rancher org to github.com/k3s-io
-supporting the [acceptance of K3s as a CNCF sandbox project](https://github.com/cncf/toc/pull/447)_.
-
----
-
 `k3s-root` is based on https://github.com/buildroot/buildroot and provides the userspace binaries for `rancher/k3s`
 
 ## Building
@@ -30,18 +25,16 @@ The default way of building this project is through container using dapper. If y
 
 ## Upgrading to new buildroot version
 
-To upgrade to a new buildroot version, you must follow 4 steps:
+To upgrade to a new buildroot version:
 
-1 - Modify the BUILDROOT_VERSION in scripts/download
-
-2 - Check what is the busybox version in the new buildroot package. Then, upgrade the package/busybox.config by cloning the [busybox project](https://github.com/mirror/busybox) and then:
-```
-git checkout $busybox_version
-cp $K3S_ROOT_PATH/package/busybox.config .config
-make oldconfig
-# Choose the new options
-cp .config $K3S_ROOT_PATH/package/busybox.config
-```
-3 - Follow the same steps with the buildroot/ configurations. The command `make oldconfig` also works in the buildroot project
-
-4 - Verify if the upgrade worked correctly by comparing the old tarball and the new one. If the same files are there, then you are set
+1. Check out a new branch for your work: `git checkout -B bump-buildroot origin/master`
+1. Modify the `BUILDROOT_VERSION` in scripts/download
+2. Run `make download` to prepare a Docker image for further work 
+4. For each target architecture: 
+   1. Start a shell in the resulting image: `docker run --rm -it -e BUILDARCH=<ARCH> k3s-root:bump_buildroot /bin/bash`
+   2. Run `./scripts/download && ./scripts/patch`
+   3. Run `cd /usr/src/buildroot && make olddefconfig`
+   4. Outside the container, split changes to the buildroot `.config` into `buildroot/config` and `buildroot/<ARCH>config`
+   5. Run `make BUILDARCH=<ARCH>`
+   6. Verify if the upgrade worked correctly by comparing the old tarball and the new one. If the same files are there, then you are set.
+      If the build failed, or some files are missing, you may need to remove or adapt patches or config for the new buildroot version.

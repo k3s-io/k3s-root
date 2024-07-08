@@ -58,7 +58,6 @@ BR2_ARM_CPU_ARMV6=y
 # armv5 cores
 #
 # BR2_arm926t is not set
-# BR2_iwmmxt is not set
 # BR2_xscale is not set
 
 #
