@@ -4,7 +4,8 @@ set -eux -o pipefail
 
 mkdir -p \
     /source/dist \
-    /source/artifacts/"${BUILDARCH}"/{bin,etc,xtables-bin}
+    /source/artifacts/"${BUILDARCH}"/{bin,etc,xtables-bin} \
+    /source/artifacts/"${BUILDARCH}"/bin/aux
 
 pushd /usr/src
 
@@ -14,6 +15,7 @@ cp buildroot/output/target/usr/sbin/{conntrack,ethtool,ipset}    "/source/artifa
 cp buildroot/output/target/usr/bin/{coreutils,find,fuse-overlayfs,nsenter,pigz,slirp4netns,xargs} "/source/artifacts/${BUILDARCH}/bin/"
 cp buildroot/output/target/sbin/{blkid,ip,losetup}               "/source/artifacts/${BUILDARCH}/bin/"
 cp buildroot/output/target/bin/busybox                           "/source/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/sbin/nft                          "/source/artifacts/${BUILDARCH}/bin/aux/"
 
 cp -r /source/iptables-detect/*.sh "/source/artifacts/${BUILDARCH}/xtables-bin/"
 
@@ -31,7 +33,6 @@ ln -sf pigz "/source/artifacts/${BUILDARCH}/bin/unpigz"
 rm -f "/source/artifacts/${BUILDARCH}/bin/mount"
 rm -f "/source/artifacts/${BUILDARCH}/bin/modprobe"
 
-mkdir -p "/source/artifacts/${BUILDARCH}/bin/aux"
 ln -sf ../busybox "/source/artifacts/${BUILDARCH}/bin/aux/mount"
 ln -sf ../busybox "/source/artifacts/${BUILDARCH}/bin/aux/modprobe"
 
@@ -43,5 +44,6 @@ cp -rp /source/artifacts/"${BUILDARCH}"/xtables-bin/* "/source/artifacts/${BUILD
 
 tar cf - -C "/source/artifacts/${BUILDARCH}" ./bin ./etc > "/source/dist/k3s-root-${BUILDARCH}.tar"
 tar cf - -C "/source/artifacts/${BUILDARCH}" --transform s/xtables-bin/bin/ ./xtables-bin > "/source/dist/k3s-root-xtables-${BUILDARCH}.tar"
+tar -vtf "/source/dist/k3s-root-${BUILDARCH}.tar"
 
 popd

@@ -3474,7 +3474,7 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LIBFRIBIDI is not set
 # BR2_PACKAGE_LIBUNIBREAK is not set
 # BR2_PACKAGE_LIBUNISTRING is not set
-# BR2_PACKAGE_LINENOISE is not set
+BR2_PACKAGE_LINENOISE=y
 # BR2_PACKAGE_NCURSES is not set
 
 #
@@ -3905,7 +3905,7 @@ BR2_PACKAGE_IPTABLES_NFTABLES=y
 # NetworkManager needs udev /dev management and a glibc toolchain w/ headers >= 4.6, dynamic library, wchar, threads, gcc >= 4.9
 #
 # BR2_PACKAGE_NFACCT is not set
-# BR2_PACKAGE_NFTABLES is not set
+BR2_PACKAGE_NFTABLES=y
 # BR2_PACKAGE_NGINX is not set
 # BR2_PACKAGE_NGIRCD is not set
 # BR2_PACKAGE_NGREP is not set
