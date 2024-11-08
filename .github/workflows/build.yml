@@ -1,0 +1,21 @@
+name: Build
+on:
+  pull_request:
+    paths-ignore:
+      - "README.md"
+      - "LICENSE"
+      - ".drone.yml"
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [amd64, arm64, arm, riscv64]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build ${{ matrix.arch }}
+        run: |
+          BUILDARCH=${{ matrix.arch }} ./scripts/entry ci
