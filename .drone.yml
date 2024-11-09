@@ -11,7 +11,7 @@ steps:
 - name: build-amd64
   image: rancher/dapper:v0.5.0
   resources:
-    cpu: 7000
+    cpu: 8000
     memory: 8Gi
   commands:
   - dapper ci
@@ -71,7 +71,7 @@ steps:
 - name: build-riscv64
   image: rancher/dapper:v0.5.0
   resources:
-    cpu: 7000
+    cpu: 8000
     memory: 8Gi
   commands:
   - dapper ci
@@ -113,7 +113,7 @@ volumes:
 ---
 kind: pipeline
 type: docker
-name: k3s-root-linux-arm64
+name: k3s-root-linux-arm
 
 platform:
   os: linux
@@ -122,9 +122,6 @@ platform:
 steps:
 - name: build-arm64
   image: rancher/dapper:v0.5.0
-  # resources:
-  #   cpu: 7000
-  #   memory: 8Gi
   commands:
   - dapper ci
   environment:
@@ -157,20 +154,6 @@ steps:
     - refs/head/master
     - refs/tags/*
 
-volumes:
-- name: docker
-  host:
-    path: /var/run/docker.sock
----
-kind: pipeline
-type: docker
-name: k3s-root-linux-arm
-
-platform:
-  os: linux
-  arch: arm
-
-steps:
 - name: build-arm
   image: rancher/dapper:v0.5.0
   commands:
@@ -183,6 +166,8 @@ steps:
     path: /var/run/docker.sock
 
 - name: github-arm-binary-release
+  depends_on:
+    - build-arm
   image: plugins/github-release
   settings:
     api_key:
