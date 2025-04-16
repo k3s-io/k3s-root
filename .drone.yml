@@ -11,7 +11,7 @@ steps:
 - name: build-amd64
   image: rancher/dapper:v0.5.0
   resources:
-    cpu: 8000
+    cpu: 12000
     memory: 8Gi
   commands:
   - dapper ci
@@ -71,7 +71,7 @@ steps:
 - name: build-riscv64
   image: rancher/dapper:v0.5.0
   resources:
-    cpu: 8000
+    cpu: 12000
     memory: 8Gi
   commands:
   - dapper ci
