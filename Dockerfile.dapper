@@ -1,4 +1,4 @@
-FROM registry.suse.com/suse/sle15:15.6
+FROM registry.suse.com/suse/sle15:15.7
 RUN zypper remove -y container-suseconnect && \
     zypper install -y -t pattern devel_basis && \
     zypper remove -y gcc-7 && \
@@ -8,8 +8,8 @@ RUN zypper remove -y container-suseconnect && \
     ccache \
     cmake \
     gawk \
-    gcc13 \
-    gcc13-c++ \
+    gcc14 \
+    gcc14-c++ \
     git \
     gzip \
     hostname \
@@ -23,8 +23,8 @@ RUN zypper remove -y container-suseconnect && \
     unzip \
     wget \
     zstd && \
-    ln -sf /usr/bin/gcc-13 /usr/bin/gcc && \
-    ln -sf /usr/bin/g++-13 /usr/bin/g++
+    ln -sf /usr/bin/gcc-14 /usr/bin/gcc && \
+    ln -sf /usr/bin/g++-14 /usr/bin/g++
 
 ENV DAPPER_SOURCE /source
 ENV DAPPER_OUTPUT ./artifacts ./dist
