@@ -7,4 +7,8 @@ export BUILDROOT_VERSION
 
 mkdir -p /usr/src/buildroot
 
-curl -sfL https://github.com/buildroot/buildroot/archive/refs/tags/${BUILDROOT_VERSION}.tar.gz | tar xz -C /usr/src/buildroot --strip-components=1
+BUILDROOT_SHA256="539cdaeb0d1b2732d2b176536616bce2a1c8d4b4147c99a5daddcad5b69a03ad"
+curl -fsSL "https://github.com/buildroot/buildroot/archive/refs/tags/${BUILDROOT_VERSION}.tar.gz" > /tmp/buildroot.tar.gz
+echo "${BUILDROOT_SHA256}  /tmp/buildroot.tar.gz" | sha256sum -c -
+tar xz -C /usr/src/buildroot --strip-components=1 < /tmp/buildroot.tar.gz
+rm -f /tmp/buildroot.tar.gz
