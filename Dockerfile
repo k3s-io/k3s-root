@@ -41,4 +41,5 @@ COPY --parents buildroot/ iptables-detect/ package/ patches/ scripts/ /usr/src/k
 RUN ./scripts/ci
 
 FROM scratch AS result
-COPY --from=build --parents /usr/src/k3s-root/dist/ /usr/src/k3s-root/artifacts/ /
+COPY --from=build /usr/src/k3s-root/dist/ /dist/
+COPY --from=build /usr/src/k3s-root/artifacts/ /artifacts/
