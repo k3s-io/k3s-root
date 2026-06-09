@@ -12,8 +12,8 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        arch: [amd64 arm64 arm riscv64]
-    runs-on: ${{ matrix.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
+        arch: [amd64, arm64, arm, riscv64]
+    runs-on: ${{ matrix.arch == 'arm64' && (github.repository_owner == 'k3s-io' && 'cncf-ubuntu-24-96-arm' || 'ubuntu-24.04-arm') || (github.repository_owner == 'k3s-io' && 'cncf-ubuntu-24-96-x86' || 'ubuntu-latest') }}
     steps:
     - name: Checkout
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -30,12 +30,12 @@ jobs:
         target: result
         outputs: type=local,dest=.
         build-args: |
-          ARCH=${{ matrix.arch }}
+          BUILDARCH=${{ matrix.arch }}
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
       with:
-        name: 
+        name: dist-${{ matrix.arch }}
         path: dist/k3s-*${{ matrix.arch }}.tar
         if-no-files-found: error
         retention-days: 1
