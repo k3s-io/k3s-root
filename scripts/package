@@ -2,48 +2,50 @@
 
 set -eux -o pipefail
 
+SOURCE="$(realpath $(dirname "$0")/..)"
+
 mkdir -p \
-    /source/dist \
-    /source/artifacts/"${BUILDARCH}"/{bin,etc,xtables-bin} \
-    /source/artifacts/"${BUILDARCH}"/bin/aux
+    ${SOURCE}/dist \
+    ${SOURCE}/artifacts/"${BUILDARCH}"/{bin,etc,xtables-bin} \
+    ${SOURCE}/artifacts/"${BUILDARCH}"/bin/aux
 
 pushd /usr/src
 
 # copy binaries
-cp -d buildroot/output/target/usr/sbin/*tables*                  "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/sbin/{conntrack,ethtool,ipset}    "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/bin/{coreutils,find,fuse-overlayfs,nsenter,pigz,slirp4netns,xargs} "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/sbin/{blkid,ip,losetup}               "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/bin/busybox                           "/source/artifacts/${BUILDARCH}/bin/"
-cp buildroot/output/target/usr/sbin/nft                          "/source/artifacts/${BUILDARCH}/bin/aux/"
+cp -d buildroot/output/target/usr/sbin/*tables*                  "${SOURCE}/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/sbin/{conntrack,ethtool,ipset}    "${SOURCE}/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/bin/{coreutils,find,fuse-overlayfs,nsenter,pigz,slirp4netns,xargs} "${SOURCE}/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/sbin/{blkid,ip,losetup}               "${SOURCE}/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/bin/busybox                           "${SOURCE}/artifacts/${BUILDARCH}/bin/"
+cp buildroot/output/target/usr/sbin/nft                          "${SOURCE}/artifacts/${BUILDARCH}/bin/aux/"
 
-cp -r /source/iptables-detect/*.sh "/source/artifacts/${BUILDARCH}/xtables-bin/"
+cp -r ${SOURCE}/iptables-detect/*.sh "${SOURCE}/artifacts/${BUILDARCH}/xtables-bin/"
 
 # setup links
 link() { \
     for l in $(find -L buildroot/output/target/ -samefile buildroot/output/target/$1/$2 | xargs -n 1 basename | sort -u | grep -v "^$2\$"); do \
-        ln -s "$2" "/source/artifacts/${BUILDARCH}/bin/$l"; \
+        ln -s "$2" "${SOURCE}/artifacts/${BUILDARCH}/bin/$l"; \
     done; \
 };
 
 link bin busybox;
 link usr/bin coreutils;
 
-ln -sf pigz "/source/artifacts/${BUILDARCH}/bin/unpigz"
-rm -f "/source/artifacts/${BUILDARCH}/bin/mount"
-rm -f "/source/artifacts/${BUILDARCH}/bin/modprobe"
+ln -sf pigz "${SOURCE}/artifacts/${BUILDARCH}/bin/unpigz"
+rm -f "${SOURCE}/artifacts/${BUILDARCH}/bin/mount"
+rm -f "${SOURCE}/artifacts/${BUILDARCH}/bin/modprobe"
 
-ln -sf ../busybox "/source/artifacts/${BUILDARCH}/bin/aux/mount"
-ln -sf ../busybox "/source/artifacts/${BUILDARCH}/bin/aux/modprobe"
+ln -sf ../busybox "${SOURCE}/artifacts/${BUILDARCH}/bin/aux/mount"
+ln -sf ../busybox "${SOURCE}/artifacts/${BUILDARCH}/bin/aux/modprobe"
 
-mv /source/artifacts/"${BUILDARCH}"/bin/*tables* "/source/artifacts/${BUILDARCH}/xtables-bin/"
+mv ${SOURCE}/artifacts/"${BUILDARCH}"/bin/*tables* "${SOURCE}/artifacts/${BUILDARCH}/xtables-bin/"
 for target in iptables iptables-save iptables-restore ip6tables ip6tables-save ip6tables-restore; do
-    ln -sf iptables-detect.sh "/source/artifacts/${BUILDARCH}/xtables-bin/$target"
+    ln -sf iptables-detect.sh "${SOURCE}/artifacts/${BUILDARCH}/xtables-bin/$target"
 done
-cp -rp /source/artifacts/"${BUILDARCH}"/xtables-bin/* "/source/artifacts/${BUILDARCH}/bin/aux"
+cp -rp ${SOURCE}/artifacts/"${BUILDARCH}"/xtables-bin/* "${SOURCE}/artifacts/${BUILDARCH}/bin/aux"
 
-tar cf - -C "/source/artifacts/${BUILDARCH}" ./bin ./etc > "/source/dist/k3s-root-${BUILDARCH}.tar"
-tar cf - -C "/source/artifacts/${BUILDARCH}" --transform s/xtables-bin/bin/ ./xtables-bin > "/source/dist/k3s-root-xtables-${BUILDARCH}.tar"
-tar -vtf "/source/dist/k3s-root-${BUILDARCH}.tar"
+tar cf - -C "${SOURCE}/artifacts/${BUILDARCH}" ./bin ./etc > "${SOURCE}/dist/k3s-root-${BUILDARCH}.tar"
+tar cf - -C "${SOURCE}/artifacts/${BUILDARCH}" --transform s/xtables-bin/bin/ ./xtables-bin > "${SOURCE}/dist/k3s-root-xtables-${BUILDARCH}.tar"
+tar -vtf "${SOURCE}/dist/k3s-root-${BUILDARCH}.tar"
 
 popd
