@@ -3,13 +3,14 @@
 set -eux
 
 shopt -s nullglob
+SOURCE="$(realpath $(dirname "$0")/..)"
 
-rsync -amv /source/package/ /usr/src/buildroot/package/
+rsync -amv ${SOURCE}/package/ /usr/src/buildroot/package/
 
 pushd /usr/src/buildroot
-for PATCH in /source/patches/*.patch; do
+for PATCH in ${SOURCE}/patches/*.patch; do
   patch -t -p1 -i "${PATCH}"
 done
 popd
 
-cat /source/buildroot/{"${BUILDARCH}config",config} > /usr/src/buildroot/.config
+cat ${SOURCE}/buildroot/{"${BUILDARCH}config",config} > /usr/src/buildroot/.config
