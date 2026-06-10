@@ -8,8 +8,9 @@ jobs:
   release:
     name: Release
     permissions:
-      contents: write # Needed to update release with binary assets
+      contents: write # needed to update release with binary assets
       attestations: write # needed for attest action
+      id-token: write # needed for attest action
     strategy:
       fail-fast: true
       matrix:
