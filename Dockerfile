@@ -38,8 +38,13 @@ ENV BR2_DL_DIR=/var/cache/dl
 ENV FORCE_UNSAFE_CONFIGURE=1
 WORKDIR /usr/src/k3s-root
 COPY --parents buildroot/ iptables-detect/ package/ patches/ scripts/ /usr/src/k3s-root/
+
+FROM build AS download
+RUN ./scripts/download
+
+FROM build AS ci
 RUN ./scripts/ci
 
 FROM scratch AS result
-COPY --from=build /usr/src/k3s-root/dist/ /dist/
-COPY --from=build /usr/src/k3s-root/artifacts/ /artifacts/
+COPY --from=ci /usr/src/k3s-root/dist/ /dist/
+COPY --from=ci /usr/src/k3s-root/artifacts/ /artifacts/

@@ -15,6 +15,12 @@ sub-build-%:
 
 .PHONY: $(TARGETS)
 
+download:
+	docker build \
+		--build-arg=VERBOSE=$(VERBOSE) \
+		--build-arg=BUILDARCH=$(ARCH) \
+		-f Dockerfile --target=download --output=type=image,name=k3s-io/k3s-root:dev .
+
 ci:
 	docker build \
 		--build-arg=VERBOSE=$(VERBOSE) \

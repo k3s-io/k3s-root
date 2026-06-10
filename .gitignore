@@ -1,7 +1,6 @@
 /dist
 /artifacts
 /build
-/.dapper
 .bashrc
 .bash_history
 .bash_profile
