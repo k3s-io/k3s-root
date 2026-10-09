@@ -1,0 +1,56 @@
+diff --git a/package/libnftnl/libnftnl.hash b/package/libnftnl/libnftnl.hash
+index bd29e76bc3..eb29773315 100644
+--- a/package/libnftnl/libnftnl.hash
++++ b/package/libnftnl/libnftnl.hash
+@@ -1,8 +1,8 @@
+ # From http://www.netfilter.org/projects/libnftnl/downloads.html
+ # Checked pgp signature:
+-# https://www.netfilter.org/projects/libnftnl/files/libnftnl-1.2.7.tar.xz.sig
++# https://www.netfilter.org/projects/libnftnl/files/libnftnl-1.2.8.tar.xz.sig
+ # with key:
+ # https://www.netfilter.org/files/coreteam-gpg-key-0xD55D978A8A1420E4.txt
+-sha256  9122774f968093d5c0bacddd67de480f31fa4073405a7fc058a34b0f387aecb3  libnftnl-1.2.7.tar.xz
++sha256  37fea5d6b5c9b08de7920d298de3cdc942e7ae64b1a3e8b880b2d390ae67ad95  libnftnl-1.2.8.tar.xz
+ # Locally computed:
+ sha256  98193898c663001eff2fdcfb676e210c13042bc1a05e8d570c363efa396f8e24  COPYING
+diff --git a/package/libnftnl/libnftnl.mk b/package/libnftnl/libnftnl.mk
+index 65a1431e94..279ee94118 100644
+--- a/package/libnftnl/libnftnl.mk
++++ b/package/libnftnl/libnftnl.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-LIBNFTNL_VERSION = 1.2.7
++LIBNFTNL_VERSION = 1.2.8
+ LIBNFTNL_SITE = https://netfilter.org/projects/libnftnl/files
+ LIBNFTNL_SOURCE = libnftnl-$(LIBNFTNL_VERSION).tar.xz
+ LIBNFTNL_LICENSE = GPL-2.0+
+diff --git a/package/nftables/nftables.hash b/package/nftables/nftables.hash
+index ef635cd3c3..819b96f723 100644
+--- a/package/nftables/nftables.hash
++++ b/package/nftables/nftables.hash
+@@ -1,8 +1,8 @@
+ # From https://netfilter.org/projects/nftables/downloads.html
+ # Checked pgp signature:
+-# https://netfilter.org/projects/nftables/files/nftables-1.1.0.tar.xz.sig
++# https://netfilter.org/projects/nftables/files/nftables-1.1.1.tar.xz.sig
+ # with key:
+ # https://netfilter.org/files/coreteam-gpg-key-0xD55D978A8A1420E4.txt
+-sha256  ef3373294886c5b607ee7be82c56a25bc04e75f802f8e8adcd55aac91eb0aa24  nftables-1.1.0.tar.xz
++sha256  6358830f3a64f31e39b0ad421d7dadcd240b72343ded48d8ef13b8faf204865a  nftables-1.1.1.tar.xz
+ # Locally computed:
+ sha256  4ee1e51baf5f3166712fa0c3e01338c7257e50ddef245d28bb14ad68f6070ba5  COPYING
+diff --git a/package/nftables/nftables.mk b/package/nftables/nftables.mk
+index c958f0eb26..93e90f9101 100644
+--- a/package/nftables/nftables.mk
++++ b/package/nftables/nftables.mk
+@@ -4,7 +4,7 @@
+ #
+ ################################################################################
+ 
+-NFTABLES_VERSION = 1.1.0
++NFTABLES_VERSION = 1.1.1
+ NFTABLES_SOURCE = nftables-$(NFTABLES_VERSION).tar.xz
+ NFTABLES_SITE = https://www.netfilter.org/projects/nftables/files
+ NFTABLES_DEPENDENCIES = libmnl libnftnl host-pkgconf $(TARGET_NLS_DEPENDENCIES)
