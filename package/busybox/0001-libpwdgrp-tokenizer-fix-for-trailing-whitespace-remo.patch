@@ -1,0 +1,30 @@
+From c2dec52d37380d27d89827cf01a770f6b3b04e3a Mon Sep 17 00:00:00 2001
+From: Denys Vlasenko <vda.linux@googlemail.com>
+Date: Tue, 22 Sep 2026 02:19:06 +0200
+Subject: [PATCH] libpwdgrp: tokenizer fix for trailing whitespace removeal.
+
+The tokenize() function trims trailing whitespace via
+overlapping_strcpy() but continues to reference the stale *end
+pointer. Fixing this.
+
+function                                             old     new   delta
+tokenize                                             120     119      -1
+
+Signed-off-by: Denys Vlasenko <vda.linux@googlemail.com>
+---
+ libpwdgrp/pwd_grp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libpwdgrp/pwd_grp.c b/libpwdgrp/pwd_grp.c
+index 10debbcdb..48a49fc24 100644
+--- a/libpwdgrp/pwd_grp.c
++++ b/libpwdgrp/pwd_grp.c
+@@ -171,7 +171,7 @@ static int tokenize(char *buffer, int ch)
+ 			if (p != end)
+ 				overlapping_strcpy(p, end);
+ 			num_fields++;
+-			if (*end == '\0') {
++			if (*p == '\0') {
+ 				S.tokenize_end = p + 1;
+ 				return num_fields;
+ 			}
